@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="gray">#e8e9ea</color>
+    <color name="blue">#445bc8</color>
+    <color name="dot_focused_color">#FFFFFF</color>
+    <color name="dot_normal_color">#888888</color>
+
+</resources>

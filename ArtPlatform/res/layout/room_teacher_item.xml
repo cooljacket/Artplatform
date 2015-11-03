@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal" >
+    <ImageView android:id="@+id/iv_header_teacher_item"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_margin="10dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/ic_contact_picture"/>
+	<LinearLayout android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:orientation="vertical">
+	    <TextView android:id="@+id/tv_name_teacher_item"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:textColor="#2e2e2e"
+	        android:textSize="15sp"
+	        android:layout_marginTop="15dp"
+	        android:text="陈畅老师"/>
+	    <TextView android:id="@+id/tv_intro_teacher_item"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:textColor="#959595"
+	        android:textSize="14sp"
+	        android:layout_marginTop="5dp"/>
+	</LinearLayout>
+    
+</LinearLayout>
