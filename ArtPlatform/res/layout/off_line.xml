@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/offline_layout"
+    android:layout_width="match_parent"
+    android:layout_height="fill_parent"
+    android:background="#ffffff"
+    android:clickable="true"
+    android:orientation="vertical" >
+
+    <com.gexin.artplatform.view.TitleBar
+        android:id="@+id/tb_off_line"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#445bc8"
+        custom:titleColor="#ffffff"
+        custom:titleSize="13sp"
+        custom:titleText="@string/tab_me" >
+    </com.gexin.artplatform.view.TitleBar>
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="20dp"
+        android:text="您还没有登陆\n点击屏幕登陆"
+        android:textColor="#000000" />
+
+</LinearLayout>

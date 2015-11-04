@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    <RelativeLayout android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp">
+        <LinearLayout android:id="@+id/ll_info_header"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_centerInParent="true"
+            android:gravity="center">
+            <TextView android:id="@+id/tv_tip_header"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="下拉可以刷新"/>
+            <TextView android:id="@+id/tv_last_header"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="刚刚"/>
+        </LinearLayout>
+        <ImageView android:id="@+id/iv_arrow_header"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@id/ll_info_header"
+            android:layout_marginRight="20dp"
+            android:src="@drawable/pull_to_refresh_arrow"/>
+        <ProgressBar android:id="@+id/pb_header"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@id/ll_info_header"
+            android:layout_marginRight="20dp"
+            style="?android:attr/progressBarStyleSmall"
+            android:visibility="gone"/>
+    </RelativeLayout>
+
+</LinearLayout>

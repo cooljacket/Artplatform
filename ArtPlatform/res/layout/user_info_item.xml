@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_vertical"
+    android:padding="10dp"
+    android:background="#ffffff" >
+
+    <TextView
+        android:id="@+id/tv_title_user_info_item"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="姓名"
+        android:textColor="#2e2e2e"
+        android:textSize="17sp" />
+
+    <ImageView android:id="@+id/iv_arrow_user_info_item"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:src="@drawable/mm_submenu" />
+    
+    <TextView
+        android:id="@+id/tv_content_user_info_item"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="小白Xiaobai"
+        android:textColor="#959595"
+        android:layout_toLeftOf="@id/iv_arrow_user_info_item"
+        android:layout_marginRight="5dp"
+        android:textSize="15sp" />
+
+</RelativeLayout>

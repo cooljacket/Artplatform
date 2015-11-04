@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff" >
+
+    <ImageView
+        android:id="@+id/iv_header_answer_item"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_margin="10dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/ic_contact_picture" />
+
+    <TextView
+        android:id="@+id/tv_name_answer_item"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_toRightOf="@id/iv_header_answer_item"
+        android:layout_marginRight="65dp"
+        android:textColor="#000000"
+        android:textSize="18sp" />
+    <TextView android:id="@+id/tv_status_answer_item"
+        android:text="老师"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/tv_name_answer_item"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="10dp"
+        android:textColor="#ffffff"
+        android:background="#ff0000"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingTop="3dp"
+        android:paddingBottom="3dp"/>
+
+    <TextView
+        android:id="@+id/tv_time_answer_item"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/iv_header_answer_item"
+        android:layout_toRightOf="@id/iv_header_answer_item"
+        android:textColor="#8a8a8a" />
+
+    <LinearLayout
+        android:id="@+id/ll_content_answer_item"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/iv_header_answer_item"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:orientation="vertical" >
+        </LinearLayout>
+    <ImageView android:id="@+id/iv_pic_answer_item"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:maxHeight="150dp"
+        android:layout_below="@id/ll_content_answer_item"
+        android:adjustViewBounds="true"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/iv_pic_answer_item"
+        android:background="#c9c9c9" />
+    <LinearLayout android:id="@+id/ll_footer_answer_item"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_below="@id/iv_pic_answer_item">
+        <LinearLayout android:id="@+id/ll_ask_answer_item"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:layout_weight="1">
+            <ImageView android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/comment_icon"/>
+            <TextView android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#2e2e2e"
+                android:layout_marginLeft="5dp"
+                android:textSize="15sp"
+                android:text="向他提问"/>
+        </LinearLayout>
+        <View android:layout_width="1dp"
+            android:layout_height="20dp"
+            android:background="#c9c9c9"/>
+        <ImageView android:id="@+id/iv_interest_answer_item"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@drawable/interest_icon_2"/>
+        
+    </LinearLayout>
+    <View android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#c9c9c9"
+        android:layout_below="@+id/ll_footer_answer_item"/>
+
+</RelativeLayout>

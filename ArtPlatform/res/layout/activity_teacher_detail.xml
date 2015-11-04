@@ -1,0 +1,173 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#ededef" >
+
+    <com.gexin.artplatform.view.TitleBar
+        android:id="@+id/tb_activity_teacher_detail"
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:background="#445bc8"
+        custom:titleColor="#ffffff"
+        custom:titleSize="7sp"
+        custom:titleText="老师详情"  >
+    </com.gexin.artplatform.view.TitleBar>
+    <RelativeLayout android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#ffffff"
+        android:layout_marginTop="10dp"
+        android:padding="10dp"
+        >
+        <ImageView android:id="@+id/iv_header_teacher_detail"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_contact_picture"/>
+        <TextView android:id="@+id/tv_name_teacher_detail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#2e2e2e"
+            android:text="陈畅老师"
+            android:textSize="16sp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="50dp"
+            android:layout_toRightOf="@id/iv_header_teacher_detail"/>
+        
+        <TextView android:id="@+id/tv_addr_teacher_detail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="北京"
+            android:textColor="#959595"
+            android:layout_toRightOf="@id/iv_header_teacher_detail"
+            android:layout_alignBottom="@id/iv_header_teacher_detail"
+            android:layout_marginLeft="10dp"/>
+        
+        
+        <ImageView android:id="@+id/iv_focus_teacher_detail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/interest_icon_2"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"/>
+    </RelativeLayout>
+    <LinearLayout android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingTop="10dp"
+        android:orientation="horizontal"
+        android:background="#ffffff">
+        <TextView 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="帖子"
+            android:textColor="#959595"/>
+        <TextView android:id="@+id/tv_tiezinum_teacher_detial"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="123"
+            android:layout_weight="1"
+            android:layout_marginLeft="5dp"
+            android:textColor="#2e2e2e"/>
+        <TextView 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="评论"
+            android:textColor="#959595"/>
+        <TextView android:id="@+id/tv_commentnum_teacher_detial"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginLeft="5dp"
+            android:text="123"
+            android:textColor="#2e2e2e"/>
+        <TextView 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="相册"
+            android:textColor="#959595"/>
+        <TextView android:id="@+id/tv_albumnum_teacher_detial"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:text="123"
+            android:textColor="#2e2e2e"/>
+    </LinearLayout>
+    <LinearLayout android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingTop="5dp"
+        android:paddingBottom="10dp"
+        android:orientation="horizontal"
+        android:background="#ffffff">
+        <TextView 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="粉丝"
+            android:textColor="#959595"/>
+        <TextView android:id="@+id/tv_fannum_teacher_detial"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginLeft="5dp"
+            android:text="123"
+            android:textColor="#2e2e2e"/>
+        <TextView 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="关注"
+            android:layout_marginLeft="30dp"
+            android:textColor="#959595"/>
+        <TextView android:id="@+id/tv_focusnum_teacher_detial"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:text="123"
+            android:layout_weight="1"
+            android:textColor="#2e2e2e"/>
+        <View android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1"/>
+    </LinearLayout>
+    <View android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#ededef"/>
+    <TextView android:id="@+id/tv_artroom_teacher_detail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="北京壹加壹画室"
+        android:background="#ffffff"
+        android:textColor="#2e2e2e"/>
+    <TextView android:id="@+id/tv_comnum_teacher_detail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:layout_marginTop="10dp"
+        android:text="回答"
+        android:background="#ffffff"
+        android:textColor="#2e2e2e"/>
+    <View android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#ededef"/>
+    <ListView android:id="@+id/lv_activity_teacher_detail"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="#ffffff"></ListView>
+
+    <!-- <Button
+        android:id="@+id/btn_msg_room_detail"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_margin="10dp"
+        android:background="#445bc8"
+        android:text="我要发消息"
+        android:textColor="#ffffff" /> -->
+
+</LinearLayout>

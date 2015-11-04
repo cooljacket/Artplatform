@@ -1,0 +1,84 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ededef"
+    android:orientation="vertical" >
+
+    <com.gexin.artplatform.view.TitleBar
+        android:id="@+id/tb_activity_modify_userinfo"
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:layout_marginBottom="10dp"
+        android:background="#445bc8"
+        custom:titleColor="#ffffff"
+        custom:titleSize="7sp" >
+    </com.gexin.artplatform.view.TitleBar>
+
+    <com.gexin.artplatform.view.ClearableEditText
+        android:id="@+id/cet_content_modify_user_info"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#ffffff"
+        android:padding="10dp"
+        android:textColor="#2e2e2e"
+        android:visibility="gone" />
+
+    <EditText
+        android:id="@+id/et_oldpswd_activity_modify_user_info"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="#ffffff"
+        android:hint="请输入旧密码"
+        android:inputType="textPassword"
+        android:padding="15dp"
+        android:singleLine="true"
+        android:textColor="#2e2e2e"
+        android:textSize="15sp"
+        android:visibility="gone" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#ededef" />
+
+    <EditText
+        android:id="@+id/et_newpswd_activity_modify_user_info"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="#ffffff"
+        android:hint="请输入新密码"
+        android:inputType="textPassword"
+        android:padding="15dp"
+        android:singleLine="true"
+        android:textColor="#2e2e2e"
+        android:textSize="15sp"
+        android:visibility="gone" />
+
+    <Button
+        android:id="@+id/btn_submit_activity_modify_user_info"
+        android:layout_width="fill_parent"
+        android:layout_height="60dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="30dp"
+        android:background="#445bc8"
+        android:text="提交"
+        android:textColor="#ffffff"
+        android:textSize="18sp"
+        android:visibility="gone" />
+
+    <ListView
+        android:id="@+id/lv_activity_modify_user_info"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:listSelector="@android:drawable/list_selector_background"
+        android:scrollbars="none"
+        android:visibility="gone" >
+    </ListView>
+
+</LinearLayout>

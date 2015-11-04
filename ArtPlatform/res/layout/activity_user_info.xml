@@ -1,0 +1,69 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ededef"
+    android:orientation="vertical" >
+
+    <com.gexin.artplatform.view.TitleBar
+        android:id="@+id/tb_userinfo_activity"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#445bc8"
+        custom:titleColor="#ffffff"
+        custom:titleSize="7sp"
+        custom:titleText="@string/userinfo" >
+    </com.gexin.artplatform.view.TitleBar>
+
+    <RelativeLayout
+        android:id="@+id/rl_userinfo_activity_userinfo"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="#ffffff"
+        android:clickable="true"
+        android:gravity="center_vertical"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp" >
+
+        <ImageView
+            android:id="@+id/iv_header_activity_userinfo"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginTop="15dp"
+            android:clickable="true"
+			android:scaleType="centerCrop"
+            android:src="@drawable/ic_contact_picture" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:text="@string/header"
+            android:textColor="#2e2e2e"
+            android:textSize="17sp" />
+    </RelativeLayout>
+
+    <ListView
+        android:id="@+id/lv_activity_userinfo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:scrollbars="none" >
+    </ListView>
+
+    <Button
+        android:id="@+id/btn_exit_activity_userinfo"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="#ffffff"
+        android:padding="10dp"
+        android:text="退出登录"
+        android:textColor="#f26d5f"
+        android:textSize="18sp" />
+
+</LinearLayout>

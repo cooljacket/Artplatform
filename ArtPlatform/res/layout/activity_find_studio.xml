@@ -1,0 +1,59 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    android:orientation="vertical" >
+
+    <com.gexin.artplatform.view.TitleBar
+        android:id="@+id/tb_activity_find_studio"
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:background="#445bc8"
+        custom:titleColor="#ffffff"
+        custom:titleSize="7sp"
+        custom:titleText="优秀画室" >
+    </com.gexin.artplatform.view.TitleBar>
+
+    <SearchView
+        android:id="@+id/sv_activity_find_studio"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:background="#ffffff"
+        android:iconifiedByDefault="false"
+        android:queryHint="搜索画室关键词" >
+    </SearchView>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1" >
+
+        <ListView
+            android:id="@+id/lv_activity_find_studio"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#ffffff"
+            android:scrollbars="none" >
+        </ListView>
+
+        <com.gexin.artplatform.view.SideBar
+            android:id="@+id/sb_activity_find_studio"
+            android:layout_width="25dp"
+            android:layout_height="fill_parent"
+            android:layout_gravity="right|center" />
+        
+        <TextView
+            android:id="@+id/tv_letter_activity_find_studio"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_gravity="center"
+            android:background="@drawable/search_bg"
+            android:gravity="center"
+            android:textColor="#ffffff"
+            android:textSize="40sp"
+            android:visibility="invisible" />
+    </FrameLayout>
+
+</LinearLayout>
