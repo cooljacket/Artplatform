@@ -40,7 +40,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/tab_homepage"
                 android:textColor="#cdfe6060"
-                android:textSize="13sp" />
+                android:textSize="12sp" />
         </LinearLayout>
 
         <LinearLayout
@@ -65,7 +65,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/tab_question_answer"
                 android:textColor="#cd504f4f"
-                android:textSize="13sp" />
+                android:textSize="12sp" />
         </LinearLayout>
 
         <LinearLayout
@@ -90,7 +90,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/tab_find"
                 android:textColor="#cd504f4f"
-                android:textSize="13sp" />
+                android:textSize="12sp" />
         </LinearLayout>
 
         <LinearLayout
@@ -115,7 +115,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/tab_me"
                 android:textColor="#cd504f4f"
-                android:textSize="13sp" />
+                android:textSize="12sp" />
         </LinearLayout>
     </LinearLayout>
 

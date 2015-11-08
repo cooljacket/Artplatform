@@ -64,7 +64,7 @@ public class UserInfoActivity extends Activity implements OnClickListener {
 	private String imagePath = "";
 	private List<Map<String, Object>> mList = new ArrayList<Map<String, Object>>();
 	private SimpleAdapter adapter;
-	private String[] titles = { "名字", "性别", "省份", "身份", "学校", "修改密码", "手机号" };
+	private String[] titles = { "用户ID", "名字", "性别", "省份", "身份", "学校", "修改密码", "手机号" };
 	private String[] gradeArray = { "高三", "高二", "高一", "初中", "大学", "业余" };
 	private List<String> values = new ArrayList<String>();
 	private int mIndex;
@@ -87,7 +87,7 @@ public class UserInfoActivity extends Activity implements OnClickListener {
 	}
 
 	private void initData() {
-
+        String userId = (String) SPUtil.get(this, "userId", "");
 		String name = (String) SPUtil.get(this, "name", "未设置");
 		int gender = (Integer) SPUtil.get(this, "gender", 0);
 		String sex = "";
@@ -114,6 +114,7 @@ public class UserInfoActivity extends Activity implements OnClickListener {
 		if (school.isEmpty()) {
 			school = "未设置";
 		}
+		values.add(userId);
 		values.add(name);
 		values.add(sex);
 		values.add(province);

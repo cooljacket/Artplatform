@@ -25,6 +25,7 @@ import android.widget.Toast;
 
 import com.gexin.artplatform.R;
 import com.gexin.artplatform.constant.Constant;
+import com.gexin.artplatform.dlog.DLog;
 import com.gexin.artplatform.utils.HttpConnectionUtils;
 import com.gexin.artplatform.utils.HttpHandler;
 import com.gexin.artplatform.utils.JSONUtil;
@@ -79,7 +80,7 @@ public class LoginActivity extends Activity {
 
 					@Override
 					protected void succeed(JSONObject jObject) {
-						Log.v(TAG, jObject.toString());
+						DLog.v(TAG, jObject.toString());
 						success(jObject);
 					}
 
@@ -87,7 +88,7 @@ public class LoginActivity extends Activity {
 				List<NameValuePair> list = new ArrayList<NameValuePair>();
 				list.add(new BasicNameValuePair("account", username));
 				list.add(new BasicNameValuePair("password", password));
-				Log.v(TAG, "param:" + list.toString());
+				DLog.v(TAG, "param:" + list.toString());
 				new HttpConnectionUtils(handler).post(LOGIN_API, list);
 			}
 		});
@@ -129,7 +130,7 @@ public class LoginActivity extends Activity {
 			if (resultCode == RESULT_OK) {
 				setResult(RESULT_OK);
 				int isTeacher = (Integer) SPUtil.get(this, "isTeacher", 0);
-				Log.v(TAG, "isTeacher:" + isTeacher);
+				DLog.v(TAG, "isTeacher:" + isTeacher);
 				finish();
 			}
 			break;
@@ -153,7 +154,7 @@ public class LoginActivity extends Activity {
 			if (state == 1) {
 				JSONUtil.analyseLoginJSON(this, jObject.getJSONObject("user")
 						.toString());
-				Log.v(TAG, "success");
+				DLog.v(TAG, "success");
 				Toast.makeText(this, "登录成功", Toast.LENGTH_SHORT).show();
 				setResult(RESULT_OK);
 				finish();

@@ -29,6 +29,7 @@ import android.widget.Toast;
 import com.gexin.artplatform.R;
 import com.gexin.artplatform.bean.User;
 import com.gexin.artplatform.constant.Constant;
+import com.gexin.artplatform.dlog.DLog;
 import com.gexin.artplatform.mine.login.LoginActivity;
 import com.gexin.artplatform.utils.HttpConnectionUtils;
 import com.gexin.artplatform.utils.SPUtil;
@@ -344,7 +345,7 @@ public class MineFragment extends Fragment {
 	}
 
 	protected void dealResponse(String obj) {
-		Log.v("MineFragment", "Response:" + obj);
+		DLog.v("MineFragment", "Response:" + obj);
 		try {
 			JSONObject jsonObject = new JSONObject(obj);
 			int state = jsonObject.getInt("stat");
@@ -369,7 +370,7 @@ public class MineFragment extends Fragment {
 
 		@Override
 		public void onReceive(Context arg0, Intent arg1) {
-			Log.v("MineFragment", arg1.getAction());
+			DLog.v("MineFragment", arg1.getAction());
 			if (UserInfoActivity.ACTION_HEADER_MODIFY.equals(arg1.getAction())) {
 				String avatarUrl = arg1.getStringExtra("avatarUrl");
 				DisplayImageOptions options = new DisplayImageOptions.Builder()

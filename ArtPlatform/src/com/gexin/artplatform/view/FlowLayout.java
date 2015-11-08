@@ -45,7 +45,7 @@ public class FlowLayout extends ViewGroup {
 		// 记录每一行的宽度和高度
 		int lineWidth = 0;
 		int lineHeight = 0;
-		// 得到内部元素的个数
+		// 得到内部元素的个数，新需求最多不超过9张
 		int cCount = getChildCount();
 
 		for (int i = 0; i < cCount; i++) {

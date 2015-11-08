@@ -27,6 +27,7 @@ import android.widget.Toast;
 import com.gexin.artplatform.R;
 import com.gexin.artplatform.bean.User;
 import com.gexin.artplatform.constant.Constant;
+import com.gexin.artplatform.dlog.DLog;
 import com.gexin.artplatform.friends.ViewOtherUserActivity;
 import com.gexin.artplatform.utils.HttpConnectionUtils;
 import com.gexin.artplatform.utils.HttpHandler;
@@ -89,6 +90,8 @@ public class FindFriendActivity extends Activity {
 				startActivity(intent);
 			}
 		});
+		// 一开始加载所有用户数据
+		getUsers("");
 	}
 
 	protected void getUsers(String name) {
@@ -110,7 +113,7 @@ public class FindFriendActivity extends Activity {
 						.getJSONArray("users").toString(),
 						new TypeToken<List<User>>() {
 						}.getType());
-				Log.v(TAG, tmpList.toString());
+				DLog.v(TAG, tmpList.toString());
 				mList.clear();
 				mList.addAll(tmpList);
 				adapter.notifyDataSetChanged();
