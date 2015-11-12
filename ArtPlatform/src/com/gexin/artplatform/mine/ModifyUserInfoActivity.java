@@ -60,6 +60,7 @@ public class ModifyUserInfoActivity extends Activity {
 	private LinearLayout llSave;
 	private TitleBar titleBar;
 	private ClearableEditText cetInput;
+	private TextView UserID;
 	private EditText etOldPswd;
 	private EditText etNewPswd;
 	private ListView mListView;
@@ -73,7 +74,7 @@ public class ModifyUserInfoActivity extends Activity {
 		mIndex = getIntent().getIntExtra("index", -1);
 		mTitle = getIntent().getStringExtra("title");
 		mValue = getIntent().getStringExtra("value");
-		if (mIndex == 6) {
+		if (mIndex == 7) {
 			mValue = "" + SPUtil.get(this, "phone", 0L);
 		}
 		if (mValue.equals("未设置")) {
@@ -86,11 +87,15 @@ public class ModifyUserInfoActivity extends Activity {
 	}
 
 	private void initData() {
+		Log.v("init", "initData");
 		switch (mIndex) {
 		case 0:
+			UserID.setText(mValue);
+			break;
+		case 1: 
 			cetInput.setText(mValue);
 			break;
-		case 1:
+		case 2:
 			for (int i = 0; i < genderArray.length; i++) {
 				Map<String, Object> map = new HashMap<String, Object>();
 				map.put("value", genderArray[i]);
@@ -104,7 +109,7 @@ public class ModifyUserInfoActivity extends Activity {
 				mList.get(selectPos).put("select", true);
 			}
 			break;
-		case 2:
+		case 3:
 			for (int i = 0; i < provinceArray.length; i++) {
 				Map<String, Object> map = new HashMap<String, Object>();
 				map.put("value", provinceArray[i]);
@@ -118,7 +123,7 @@ public class ModifyUserInfoActivity extends Activity {
 				mList.get(selectPos).put("select", true);
 			}
 			break;
-		case 3:
+		case 4:
 			for (int i = 0; i < statusArray.length; i++) {
 				Map<String, Object> map = new HashMap<String, Object>();
 				map.put("value", statusArray[i]);
@@ -132,12 +137,12 @@ public class ModifyUserInfoActivity extends Activity {
 				mList.get(selectPos).put("select", true);
 			}
 			break;
-		case 4:
+		case 5:
 			cetInput.setText(mValue);
 			break;
-		case 5:
-			break;
 		case 6:
+			break;
+		case 7:
 			if (mValue == null || mValue.isEmpty() || mValue.equals("0")) {
 				mValue = "";
 			}
@@ -148,7 +153,7 @@ public class ModifyUserInfoActivity extends Activity {
 			break;
 		}
 
-		if (mIndex == 1 || mIndex == 2 || mIndex == 3) {
+		if (mIndex == 2 || mIndex == 3 || mIndex == 4) {
 			adapter = new ModifyListAdapter(this, mList);
 			mListView.setAdapter(adapter);
 			mListView.setOnItemClickListener(new OnItemClickListener() {
@@ -172,6 +177,7 @@ public class ModifyUserInfoActivity extends Activity {
 
 	private void initView() {
 		titleBar = (TitleBar) findViewById(R.id.tb_activity_modify_userinfo);
+		UserID = (TextView)findViewById(R.id.UserID_modify_user_info);
 		cetInput = (ClearableEditText) findViewById(R.id.cet_content_modify_user_info);
 		etOldPswd = (EditText) findViewById(R.id.et_oldpswd_activity_modify_user_info);
 		etNewPswd = (EditText) findViewById(R.id.et_newpswd_activity_modify_user_info);
@@ -185,18 +191,29 @@ public class ModifyUserInfoActivity extends Activity {
 			}
 		});
 		initTitleBar();
-
-		if (mIndex == 0 || mIndex == 4 || mIndex == 6) {
+		if (mIndex == 0) {
+			UserID.setVisibility(View.VISIBLE);
+		}
+		if (mIndex == 1 || mIndex == 5 || mIndex == 7) {
 			cetInput.setVisibility(View.VISIBLE);
+			//Toast.makeText(ModifyUserInfoActivity.this, mIndex,
+					//Toast.LENGTH_SHORT).show();
 		}
-		if (mIndex == 1 || mIndex == 2 || mIndex == 3) {
+		if (mIndex == 2 || mIndex == 3 || mIndex == 4) {
+			Log.v("init", "initVIew2222");
 			mListView.setVisibility(View.VISIBLE);
+			//Toast.makeText(ModifyUserInfoActivity.this, mIndex,
+					//Toast.LENGTH_SHORT).show();
 		}
-		if (mIndex == 5) {
+		if (mIndex == 6) {
+			Log.v("init", "initVIew2233");
+			//Toast.makeText(ModifyUserInfoActivity.this, mIndex,
+				//	Toast.LENGTH_SHORT).show();
 			etOldPswd.setVisibility(View.VISIBLE);
 			etNewPswd.setVisibility(View.VISIBLE);
 			btnSubmit.setVisibility(View.VISIBLE);
 		}
+		Log.v("init", "initVIew33");
 	}
 
 	private void initTitleBar() {
@@ -219,7 +236,7 @@ public class ModifyUserInfoActivity extends Activity {
 			}
 		});
 
-		if (mIndex != 5) {
+		if (mIndex != 0 && mIndex != 6) {
 			llSave = new LinearLayout(this);
 			TextView tvAsk = new TextView(this);
 			tvAsk.setText("保存");
@@ -247,11 +264,11 @@ public class ModifyUserInfoActivity extends Activity {
 		String url = Constant.SERVER_URL + "/api/user/" + userId;
 		List<NameValuePair> list = new ArrayList<NameValuePair>();
 		switch (mIndex) {
-		case 0:
+	    case 1:
 			mValue = cetInput.getText().toString();
 			list.add(new BasicNameValuePair("name", mValue));
 			break;
-		case 1:
+		case 2:
 			if (selectPos == 0) {
 				list.add(new BasicNameValuePair("gender", "1"));
 				mValue = "男";
@@ -260,19 +277,19 @@ public class ModifyUserInfoActivity extends Activity {
 				mValue = "女";
 			}
 			break;
-		case 2:
+		case 3:
 			mValue = provinceArray[selectPos];
 			list.add(new BasicNameValuePair("province", mValue));
 			break;
-		case 3:
+		case 4:
 			list.add(new BasicNameValuePair("grade", "" + selectPos));
 			mValue = statusArray[selectPos];
 			break;
-		case 4:
+		case 5:
 			mValue = cetInput.getText().toString();
 			list.add(new BasicNameValuePair("school", mValue));
 			break;
-		case 5:
+		case 6:
 			String oldPswd = etOldPswd.getText().toString();
 			String newPswd = etNewPswd.getText().toString();
 			url += "/password";
@@ -280,7 +297,7 @@ public class ModifyUserInfoActivity extends Activity {
 			list.add(new BasicNameValuePair("oldPassword", oldPswd));
 			list.add(new BasicNameValuePair("newPassword", newPswd));
 			break;
-		case 6:
+		case 7:
 			try {
 				Long.parseLong(cetInput.getText().toString());
 			} catch (Exception e) {
@@ -323,23 +340,23 @@ public class ModifyUserInfoActivity extends Activity {
 
 	private void putToSP() {
 		switch (mIndex) {
-		case 0:
+		case 1:
 			SPUtil.put(this, "name", mValue);
 			break;
-		case 1:
+		case 2:
 			SPUtil.put(this, "gender", 1 - selectPos);
 			break;
-		case 2:
+		case 3:
 			SPUtil.put(this, "province", mValue);
 			break;
-		case 3:
+		case 4:
 			SPUtil.put(this, "grade", selectPos);
 			break;
-		case 4:
-			SPUtil.put(this, "school", mValue);
 		case 5:
-			break;
+			SPUtil.put(this, "school", mValue);
 		case 6:
+			break;
+		case 7:
 			SPUtil.put(this, "phone", Long.parseLong(mValue));
 			break;
 		default:

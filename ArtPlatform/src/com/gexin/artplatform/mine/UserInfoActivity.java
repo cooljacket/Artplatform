@@ -33,6 +33,7 @@ import android.widget.LinearLayout.LayoutParams;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.SimpleAdapter;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.gexin.artplatform.R;
@@ -63,17 +64,31 @@ public class UserInfoActivity extends Activity implements OnClickListener {
 	private static final String IMAGEDIR = Constant.APP_PATH + "image/";
 	private String imagePath = "";
 	private List<Map<String, Object>> mList = new ArrayList<Map<String, Object>>();
-	private SimpleAdapter adapter;
+	//private SimpleAdapter adapter;
 	private String[] titles = { "用户ID", "名字", "性别", "省份", "身份", "学校", "修改密码", "手机号" };
 	private String[] gradeArray = { "高三", "高二", "高一", "初中", "大学", "业余" };
 	private List<String> values = new ArrayList<String>();
-	private int mIndex;
+	private int mIndex = 0;
 	private DisplayImageOptions headerOptions;
 
-	private ListView mListView;
+	//private ListView mListView;
 	private Button btnExit;
 	private ImageView ivHeader;
 	private RelativeLayout rlHeader;
+	private RelativeLayout rl_ID;
+	private RelativeLayout rl_name;
+	private RelativeLayout rl_sex;
+	private RelativeLayout rl_province;
+	private RelativeLayout rl_identity;
+	private RelativeLayout rl_school;
+	private RelativeLayout rl_change_pw;
+	private RelativeLayout rl_pNumber;
+	private TextView tv_ID;
+	private TextView tv_name;
+	private TextView tv_sex;
+	private TextView tv_province;
+	private TextView tv_identity;
+	private TextView tv_school;
 	private LinearLayout llBack;
 	private TitleBar titleBar;
 
@@ -130,11 +145,19 @@ public class UserInfoActivity extends Activity implements OnClickListener {
 			}
 			mList.add(map);
 		}
-		adapter = new SimpleAdapter(this, mList, R.layout.user_info_item,
-				new String[] { "title", "content" }, new int[] {
-						R.id.tv_title_user_info_item,
-						R.id.tv_content_user_info_item });
-		mListView.setAdapter(adapter);
+		tv_ID.setText(userId);
+		tv_name.setText(name);
+		tv_sex.setText(sex);
+		tv_province.setText(province);
+		tv_identity.setText(status);
+		tv_school.setText(school);
+		
+		
+		//adapter = new SimpleAdapter(this, mList, R.layout.user_info_item,
+				//new String[] { "title", "content" }, new int[] {
+						//R.id.tv_title_user_info_item,
+						//R.id.tv_content_user_info_item });
+		//mListView.setAdapter(adapter);
 
 		headerOptions = new DisplayImageOptions.Builder()
 				.showImageOnLoading(R.drawable.ic_contact_picture)
@@ -148,18 +171,54 @@ public class UserInfoActivity extends Activity implements OnClickListener {
 	}
 
 	private void initView() {
-		mListView = (ListView) findViewById(R.id.lv_activity_userinfo);
+		//mListView = (ListView) findViewById(R.id.lv_activity_userinfo);
 		btnExit = (Button) findViewById(R.id.btn_exit_activity_userinfo);
 		ivHeader = (ImageView) findViewById(R.id.iv_header_activity_userinfo);
 		rlHeader = (RelativeLayout) findViewById(R.id.rl_userinfo_activity_userinfo);
+		rl_ID = (RelativeLayout) findViewById(R.id.id1_content_user_info);
+
+		rl_name = (RelativeLayout) findViewById(R.id.name_content_user_info);
+		rl_sex = (RelativeLayout) findViewById(R.id.sex_content_user_info);
+		rl_province = (RelativeLayout) findViewById(R.id.province_content_user_info);
+		rl_identity = (RelativeLayout) findViewById(R.id.identity_content_user_info);
+		rl_school = (RelativeLayout) findViewById(R.id.school_content_user_info);
+		rl_change_pw = (RelativeLayout) findViewById(R.id.changePassword_content_user_info);
+		rl_pNumber = (RelativeLayout) findViewById(R.id.phoneNumber_content_user_info);
+		
+		tv_ID = (TextView)findViewById(R.id.tv_id1_content_user_info_item);
+		tv_name = (TextView)findViewById(R.id.tv_name_content_user_info_item);
+		tv_sex = (TextView)findViewById(R.id.tv_sex_content_user_info_item);
+		tv_province = (TextView)findViewById(R.id.tv_province_content_user_info_item);
+		tv_identity = (TextView)findViewById(R.id.tv_identity_content_user_info_item);
+		tv_school = (TextView)findViewById(R.id.tv_school_content_user_info_item);
+		
+		
+		rl_ID.setTag(0);
+		rl_name.setTag(1);
+		rl_sex.setTag(2);
+		rl_province.setTag(3);
+		rl_identity.setTag(4);
+		rl_school.setTag(5);
+		rl_change_pw.setTag(6);
+		rl_pNumber.setTag(7);
+		
 		titleBar = (TitleBar) findViewById(R.id.tb_userinfo_activity);
-		ivHeader = (ImageView) findViewById(R.id.iv_header_activity_userinfo);
+		//ivHeader = (ImageView) findViewById(R.id.iv_header_activity_userinfo);
 
 		initTitleBar();
 		rlHeader.setOnClickListener(this);
 		ivHeader.setOnClickListener(this);
 		btnExit.setOnClickListener(this);
-		mListView.setOnItemClickListener(new OnItemClickListener() {
+		rl_ID.setOnClickListener(this);
+		rl_name.setOnClickListener(this);
+		rl_sex.setOnClickListener(this);
+		rl_province.setOnClickListener(this);
+		rl_identity.setOnClickListener(this);
+		rl_school.setOnClickListener(this);
+		rl_change_pw.setOnClickListener(this);
+		rl_pNumber.setOnClickListener(this);
+		
+		/**mListView.setOnItemClickListener(new OnItemClickListener() {
 
 			@Override
 			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
@@ -173,7 +232,7 @@ public class UserInfoActivity extends Activity implements OnClickListener {
 						.get("content"));
 				startActivityForResult(intent, MODIFY_REQUEST_CODE);
 			}
-		});
+		});**/
 	}
 
 	private void showHeaderSelectDialog() {
@@ -266,15 +325,29 @@ public class UserInfoActivity extends Activity implements OnClickListener {
 				break;
 			case MODIFY_REQUEST_CODE:
 				if (resultCode == RESULT_OK) {
-					String value = data.getStringExtra("value");
+					Log.v("ok", "okokokokokokok");
+					Toast.makeText(UserInfoActivity.this, "OK",
+							Toast.LENGTH_SHORT).show();
+				String value = data.getStringExtra("value");
 					if (value.isEmpty()) {
 						value = "未设置";
 					}
 					mList.get(mIndex).put("content", value);
-					if (mIndex == 5 || mIndex == 6) {
+					Log.v("ok", "okokokokokokok44");
+					if (mIndex == 6 || mIndex == 7) {
 						mList.get(mIndex).put("content", "");
 					}
-					adapter.notifyDataSetChanged();
+					Log.v("ok", "okokokokokokok55");
+					Log.v("okok", value);
+					switch(mIndex) {
+					case 1:tv_name.setText(value);;break;
+					case 2:tv_sex.setText(value);break;
+					case 3:tv_province.setText(value);break;
+					case 4:tv_identity.setText(value);break;
+					case 5:tv_school.setText(value);break;
+					default:break;
+					}
+					//adapter.notifyDataSetChanged();*/
 				}
 				break;
 			default:
@@ -410,6 +483,7 @@ public class UserInfoActivity extends Activity implements OnClickListener {
 						Toast.makeText(UserInfoActivity.this, "退出失败，请稍后重试",
 								Toast.LENGTH_SHORT).show();
 						break;
+					
 					default:
 						break;
 					}
@@ -419,11 +493,31 @@ public class UserInfoActivity extends Activity implements OnClickListener {
 			//DLog.i("logout api", Constant.SERVER_URL + Constant.USER_LOGOUT_API);
 			new HttpConnectionUtils(handler).get(Constant.SERVER_URL
 					+ Constant.USER_LOGOUT_API);
-
 			break;
-
+			
+		case R.id.id1_content_user_info:
+			mIndex = (Integer)((RelativeLayout)v).getTag();
+			Intent intent = new Intent(UserInfoActivity.this,
+					ModifyUserInfoActivity.class);
+			intent.putExtra("index", mIndex);
+			intent.putExtra("title", titles[mIndex]);
+			intent.putExtra("value", (String) mList.get(mIndex)
+					.get("content"));
+			startActivityForResult(intent, MODIFY_REQUEST_CODE);
+			break;
+		
 		default:
+			
+			mIndex = (Integer) ((RelativeLayout)v).getTag();
+			Intent intent2 = new Intent(UserInfoActivity.this,
+					ModifyUserInfoActivity.class);
+			intent2.putExtra("index", mIndex);
+			intent2.putExtra("title", titles[mIndex]);
+			intent2.putExtra("value", (String) mList.get(mIndex)
+					.get("content"));
+			startActivityForResult(intent2, MODIFY_REQUEST_CODE);
 			break;
 		}
 	}
+	
 }

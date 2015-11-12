@@ -24,6 +24,15 @@
         android:textColor="#2e2e2e"
         android:visibility="gone" />
 
+    <TextView 
+        android:id="@+id/UserID_modify_user_info"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#ffffff"
+        android:padding="10dp"
+        android:textColor="#2e2e2e"
+        android:visibility="gone" 
+        />
     <EditText
         android:id="@+id/et_oldpswd_activity_modify_user_info"
         android:layout_width="fill_parent"
