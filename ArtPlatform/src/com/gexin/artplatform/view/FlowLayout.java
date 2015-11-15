@@ -49,7 +49,7 @@ public class FlowLayout extends ViewGroup {
 		int lineHeight = 0;
 		// 得到内部元素的个数，新需求最多不超过9张
 		int cCount = getChildCount();
-		cCount = cCount > 9? 9 : cCount;
+		cCount = cCount > 9 ? 9 : cCount;
 
 		for (int i = 0; i < cCount; i++) {
 			View child = getChildAt(i);
@@ -65,7 +65,8 @@ public class FlowLayout extends ViewGroup {
 			int childHeight = child.getMeasuredHeight() + lp.topMargin
 					+ lp.bottomMargin;
 			// 换行
-			if (lineWidth + childWidth > sizeWidth - getPaddingLeft() - getPaddingRight()) {
+			if (lineWidth + childWidth > sizeWidth - getPaddingLeft()
+					- getPaddingRight()) {
 				// 对比得到最大的宽度
 				width = Math.max(width, lineWidth);
 				// 重置lineWidth
@@ -91,18 +92,21 @@ public class FlowLayout extends ViewGroup {
 		DLog.v(TAG, "sizeHeight:" + sizeHeight + ",height:" + height);
 		setMeasuredDimension(
 				//
-				modeWidth == MeasureSpec.EXACTLY ? sizeWidth : width + getPaddingLeft() + getPaddingRight(),
-				modeHeight == MeasureSpec.EXACTLY ? sizeHeight : height + getPaddingTop()+ getPaddingBottom()//
+				modeWidth == MeasureSpec.EXACTLY ? sizeWidth : width
+						+ getPaddingLeft() + getPaddingRight(),
+				modeHeight == MeasureSpec.EXACTLY ? sizeHeight : height
+						+ getPaddingTop() + getPaddingBottom()//
 		);
 
-//		super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+		// super.onMeasure(widthMeasureSpec, heightMeasureSpec);
 	}
 
 	// 存储所有的View，按行存储
 	private List<List<View>> mAllViews = new ArrayList<List<View>>();
 	private List<Integer> mLineHeight = new ArrayList<Integer>();
 
-	@SuppressLint("DrawAllocation") @Override
+	@SuppressLint("DrawAllocation")
+	@Override
 	protected void onLayout(boolean arg0, int arg1, int arg2, int arg3, int arg4) {
 		mAllViews.clear();
 		mLineHeight.clear();
@@ -140,7 +144,7 @@ public class FlowLayout extends ViewGroup {
 			lineHeight = Math.max(lineHeight, childHeight + lp.topMargin
 					+ lp.bottomMargin);
 			lineViews.add(child);
-			
+
 		}
 		// 处理最后一行
 		mLineHeight.add(lineHeight);
@@ -154,18 +158,15 @@ public class FlowLayout extends ViewGroup {
 		// 行数
 		int lineNum = mAllViews.size();
 
-		for (int i = 0; i < lineNum; i++)
-		{
+		for (int i = 0; i < lineNum; i++) {
 			// 当前行的所有的View
 			lineViews = mAllViews.get(i);
 			lineHeight = mLineHeight.get(i);
 
-			for (int j = 0; j < lineViews.size(); j++)
-			{
+			for (int j = 0; j < lineViews.size(); j++) {
 				View child = lineViews.get(j);
 				// 判断child的状态
-				if (child.getVisibility() == View.GONE)
-				{
+				if (child.getVisibility() == View.GONE) {
 					continue;
 				}
 
@@ -183,8 +184,8 @@ public class FlowLayout extends ViewGroup {
 				left += child.getMeasuredWidth() + lp.leftMargin
 						+ lp.rightMargin;
 			}
-			left = getPaddingLeft() ; 
-			top += lineHeight ; 
+			left = getPaddingLeft();
+			top += lineHeight;
 		}
 	}
 

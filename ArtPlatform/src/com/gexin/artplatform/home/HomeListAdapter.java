@@ -3,10 +3,12 @@ package com.gexin.artplatform.home;
 import java.util.ArrayList;
 import java.util.List;
 
+import android.R.integer;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -132,15 +134,23 @@ public class HomeListAdapter extends BaseAdapter {
 				holder.ivHeader, avatarOptions);
 		holder.flPics.removeAllViews();
 		int cnt = 0;
+		
+		// 一行显示三张图片
+		int magin = 5;
+//		int imageWidth = (holder.flPics.getWidth() - magin * 6) / 3;
+//		int imageHeight = imageWidth;
+		int imageWidth = 130;
+		int imageHeight = 130;
 		for (String url : article.getImages()) {
 			ImageView imageView = new ImageView(mContext);
-//			imageView.setMaxHeight(120);
-//			imageView.setMaxWidth(150);
+//			imageView.setMaxHeight(imageHeight);
+//			imageView.setMaxWidth(imageWidth);
 //			imageView.setAdjustViewBounds(true);
 			imageView.setScaleType(ScaleType.CENTER_CROP);
+			
 			MarginLayoutParams lp = new MarginLayoutParams(
-					130, 130);
-			lp.setMargins(5, 5, 5, 5);
+					imageWidth, imageHeight);
+			lp.setMargins(magin, magin, magin, magin);
 			ImageLoader.getInstance().displayImage(url, imageView, picOptions);
 			holder.flPics.addView(imageView, lp);
 			final int index = cnt;
