@@ -8,13 +8,15 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.animation.AlphaAnimation;
 
+import com.gexin.artplatform.application.UILApplication;
+import com.gexin.artplatform.bean.User;
 import com.gexin.artplatform.constant.Conf;
 import com.gexin.artplatform.constant.Constant;
 import com.gexin.artplatform.utils.SPUtil;
 
 public class WelcomeActivity extends Activity {
 
-	private static final int sleepTime = 1000;
+	private static final int sleepTime = 500;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -23,8 +25,15 @@ public class WelcomeActivity extends Activity {
 		super.onCreate(savedInstanceState);
 
 		createFileDirs();
-		
+
 		Conf.isFirst = (Boolean) SPUtil.get(this, "isFirst", true);
+		Conf.isLogin = (Boolean) SPUtil.get(this, "isLogin", false);
+		// 防止老客户登录出现问题
+		if (!((String) SPUtil.get(this, "userId", "")).equals("")) {
+			Conf.isLogin = true;
+			SPUtil.put(this, "isLogin", true);
+		}
+
 		AlphaAnimation animation = new AlphaAnimation(0.3f, 1.0f);
 		animation.setDuration(1500);
 		view.startAnimation(animation);
@@ -47,6 +56,11 @@ public class WelcomeActivity extends Activity {
 					startActivity(new Intent(WelcomeActivity.this,
 							GuideActivity.class));
 				} else {
+					if (Conf.isLogin == true) {
+						User user = new User(WelcomeActivity.this);
+						((UILApplication) WelcomeActivity.this.getApplication())
+								.setUser(user);
+					}
 					startActivity(new Intent(WelcomeActivity.this,
 							MainActivity.class));
 				}

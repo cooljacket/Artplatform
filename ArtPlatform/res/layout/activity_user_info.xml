@@ -2,8 +2,7 @@
     xmlns:custom="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#ededef"
-     >
+    android:background="#ededef" >
 
     <com.gexin.artplatform.view.TitleBar
         android:id="@+id/tb_userinfo_activity"
@@ -15,197 +14,210 @@
         custom:titleSize="7sp"
         custom:titleText="@string/userinfo" >
     </com.gexin.artplatform.view.TitleBar>
-    
-    
-	<ScrollView 
-	    android:layout_below="@id/tb_userinfo_activity"
-		android:layout_width="fill_parent"
-		android:layout_height="fill_parent"
-		>
 
-	    <LinearLayout 
-	        android:layout_width="fill_parent"
-			android:layout_height="wrap_content"
-			android:orientation="vertical"
-	        >
-    <RelativeLayout
-        android:id="@+id/rl_userinfo_activity_userinfo"
+    <ScrollView
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/tb_userinfo_activity"
-        android:layout_marginTop="10dp"
-        android:background="#ffffff"
-        android:clickable="true"
-        android:gravity="center_vertical"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp" >
+        android:layout_height="fill_parent"
+        android:layout_below="@id/tb_userinfo_activity" >
 
-        <ImageView
-            android:id="@+id/iv_header_activity_userinfo"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:layout_marginTop="15dp"
-            android:clickable="true"
-			android:scaleType="centerCrop"
-            android:src="@drawable/ic_contact_picture" />
-
-        <TextView
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="10dp"
-            android:text="@string/header"
-            android:textColor="#2e2e2e"
-            android:textSize="17sp" />
-    </RelativeLayout>
-    
-     
-    <RelativeLayout
-        android:id="@+id/id1_content_user_info"
-        android:layout_below="@id/rl_userinfo_activity_userinfo"
-        style="@style/layoutSytle"
-        android:layout_marginTop="10dp"
-        
-        >
-        <TextView
-            android:id="@+id/tv_id1_title_user_info_item"
-            style="@style/textSytle"
-            android:text="用户ID"/>
-        <ImageView android:id="@+id/iv_arrow_user_info_item"
-            style="@style/imageStyle" />
-        <TextView
-            android:id="@+id/tv_id1_content_user_info_item"
-            style="@style/contentSytle"
-            android:text="小白Xiaobai"
-            android:layout_toLeftOf="@id/iv_arrow_user_info_item"
-            />
-	</RelativeLayout>
-	
-     <RelativeLayout
-        android:id="@+id/name_content_user_info"
-        android:layout_below="@id/id1_content_user_info"
-		style="@style/layoutSytle" >
-        <TextView
-            android:id="@+id/tv_name_title_user_info_item"
-            style="@style/textSytle"
-            android:text="名字"/>
-        <ImageView android:id="@+id/iv2_arrow_user_info_item"
-            style="@style/imageStyle" />
-        <TextView
-            android:id="@+id/tv_name_content_user_info_item"
-            style="@style/contentSytle"
-            android:text="未设置"
-            android:layout_toLeftOf="@id/iv2_arrow_user_info_item"/>
-	</RelativeLayout>
-   
-      <RelativeLayout
-        android:id="@+id/sex_content_user_info"
-        android:layout_below="@id/name_content_user_info"
-		style="@style/layoutSytle" >
-        <TextView
-            android:id="@+id/tv_sex_title_user_info_item"
-            style="@style/textSytle"
-            android:text="性别"/>
-        <ImageView android:id="@+id/iv3_arrow_user_info_item"
-            style="@style/imageStyle" />
-        <TextView
-            android:id="@+id/tv_sex_content_user_info_item"
-            style="@style/contentSytle"
-            android:text="未设置"
-            android:layout_toLeftOf="@id/iv3_arrow_user_info_item"/>
-	</RelativeLayout>
-   
-      <RelativeLayout
-        android:id="@+id/province_content_user_info"
-        android:layout_below="@id/sex_content_user_info"
-		style="@style/layoutSytle" >
-        <TextView
-            android:id="@+id/tv_province_title_user_info_item"
-            style="@style/textSytle"
-            android:text="省份"/>
-        <ImageView android:id="@+id/iv4_arrow_user_info_item"
-            style="@style/imageStyle" />
-        <TextView
-            android:id="@+id/tv_province_content_user_info_item"
-            style="@style/contentSytle"
-            android:text="未设置"
-            android:layout_toLeftOf="@id/iv4_arrow_user_info_item"/>
-	</RelativeLayout>
-	
-      <RelativeLayout
-        android:id="@+id/identity_content_user_info"
-        android:layout_below="@id/province_content_user_info"
-		style="@style/layoutSytle" >
-        <TextView
-            android:id="@+id/tv_identity_title_user_info_item"
-            style="@style/textSytle"
-            android:text="身份"/>
-        <ImageView android:id="@+id/iv5_arrow_user_info_item"
-            style="@style/imageStyle" />
-        <TextView
-            android:id="@+id/tv_identity_content_user_info_item"
-            style="@style/contentSytle"
-            android:text="未设置"
-            android:layout_toLeftOf="@id/iv5_arrow_user_info_item"/>
-	</RelativeLayout>
-	
-       <RelativeLayout
-        android:id="@+id/school_content_user_info"
-        android:layout_below="@id/identity_content_user_info"
-		style="@style/layoutSytle" >
-        <TextView
-            android:id="@+id/tv_school_title_user_info_item"
-            style="@style/textSytle"
-            android:text="学校"/>
-        <ImageView android:id="@+id/iv6_arrow_user_info_item"
-            style="@style/imageStyle" />
-        <TextView
-            android:id="@+id/tv_school_content_user_info_item"
-            style="@style/contentSytle"
-            android:text="未设置"
-            android:layout_toLeftOf="@id/iv6_arrow_user_info_item"/>
-	</RelativeLayout>
-	
-       <RelativeLayout
-        android:id="@+id/changePassword_content_user_info"
-        android:layout_below="@id/school_content_user_info"
-		style="@style/layoutSytle" >
-        <TextView
-            android:id="@+id/tv_changePassword_title_user_info_item"
-            style="@style/textSytle"
-            android:text="修改密码"/>
-        <ImageView android:id="@+id/iv7_arrow_user_info_item"
-            style="@style/imageStyle" />
-       
-	</RelativeLayout>
-	
-        <RelativeLayout
-        android:id="@+id/phoneNumber_content_user_info"
-        android:layout_below="@id/changePassword_content_user_info"
-		style="@style/layoutSytle" >
-        <TextView
-            android:id="@+id/tv_phoneNumber_title_user_info_item"
-            style="@style/textSytle"
-            android:text="手机号"/>
-        <ImageView android:id="@+id/iv8_arrow_user_info_item"
-            style="@style/imageStyle" />
-        
-	</RelativeLayout>
-    
-    <Button
-        android:id="@+id/btn_exit_activity_userinfo"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/phoneNumber_content_user_info"
-        android:layout_marginTop="10dp"
-        android:background="#ffffff"
-        android:padding="10dp"
-        android:text="退出登录"
-        android:textColor="#f26d5f"
-        android:textSize="18sp" />
-    </LinearLayout>
+            android:orientation="vertical" >
+
+            <RelativeLayout
+                android:id="@+id/rl_userinfo_activity_userinfo"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tb_userinfo_activity"
+                android:layout_marginTop="10dp"
+                android:background="#ffffff"
+                android:clickable="true"
+                android:gravity="center_vertical"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp" >
+
+                <ImageView
+                    android:id="@+id/iv_header_activity_userinfo"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginTop="15dp"
+                    android:clickable="true"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/ic_contact_picture" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="10dp"
+                    android:text="@string/header"
+                    android:textColor="#2e2e2e"
+                    android:textSize="17sp" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/id1_content_user_info"
+                style="@style/layoutSytle"
+                android:layout_marginTop="10dp" >
+
+                <TextView
+                    android:id="@+id/tv_id1_title_user_info_item"
+                    style="@style/textSytle"
+                    android:text="用户ID" />
+
+                <ImageView
+                    android:id="@+id/iv_arrow_user_info_item"
+                    style="@style/imageStyle" />
+
+                <TextView
+                    android:id="@+id/tv_id1_content_user_info_item"
+                    style="@style/contentSytle"
+                    android:layout_toLeftOf="@id/iv_arrow_user_info_item"
+                    android:text="" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/name_content_user_info"
+                style="@style/layoutSytle" >
+
+                <TextView
+                    android:id="@+id/tv_name_title_user_info_item"
+                    style="@style/textSytle"
+                    android:text="名字" />
+
+                <ImageView
+                    android:id="@+id/iv2_arrow_user_info_item"
+                    style="@style/imageStyle" />
+
+                <TextView
+                    android:id="@+id/tv_name_content_user_info_item"
+                    style="@style/contentSytle"
+                    android:layout_toLeftOf="@id/iv2_arrow_user_info_item"
+                    android:text="未设置" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/sex_content_user_info"
+                style="@style/layoutSytle" >
+
+                <TextView
+                    android:id="@+id/tv_sex_title_user_info_item"
+                    style="@style/textSytle"
+                    android:text="性别" />
+
+                <ImageView
+                    android:id="@+id/iv3_arrow_user_info_item"
+                    style="@style/imageStyle" />
+
+                <TextView
+                    android:id="@+id/tv_sex_content_user_info_item"
+                    style="@style/contentSytle"
+                    android:layout_toLeftOf="@id/iv3_arrow_user_info_item"
+                    android:text="未设置" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/province_content_user_info"
+                style="@style/layoutSytle" >
+
+                <TextView
+                    android:id="@+id/tv_province_title_user_info_item"
+                    style="@style/textSytle"
+                    android:text="省份" />
+
+                <ImageView
+                    android:id="@+id/iv4_arrow_user_info_item"
+                    style="@style/imageStyle" />
+
+                <TextView
+                    android:id="@+id/tv_province_content_user_info_item"
+                    style="@style/contentSytle"
+                    android:layout_toLeftOf="@id/iv4_arrow_user_info_item"
+                    android:text="未设置" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/identity_content_user_info"
+                style="@style/layoutSytle" >
+
+                <TextView
+                    android:id="@+id/tv_identity_title_user_info_item"
+                    style="@style/textSytle"
+                    android:text="身份" />
+
+                <ImageView
+                    android:id="@+id/iv5_arrow_user_info_item"
+                    style="@style/imageStyle" />
+
+                <TextView
+                    android:id="@+id/tv_identity_content_user_info_item"
+                    style="@style/contentSytle"
+                    android:layout_toLeftOf="@id/iv5_arrow_user_info_item"
+                    android:text="未设置" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/school_content_user_info"
+                style="@style/layoutSytle" >
+
+                <TextView
+                    android:id="@+id/tv_school_title_user_info_item"
+                    style="@style/textSytle"
+                    android:text="学校" />
+
+                <ImageView
+                    android:id="@+id/iv6_arrow_user_info_item"
+                    style="@style/imageStyle" />
+
+                <TextView
+                    android:id="@+id/tv_school_content_user_info_item"
+                    style="@style/contentSytle"
+                    android:layout_toLeftOf="@id/iv6_arrow_user_info_item"
+                    android:text="未设置" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/changePassword_content_user_info"
+                style="@style/layoutSytle" >
+
+                <TextView
+                    android:id="@+id/tv_changePassword_title_user_info_item"
+                    style="@style/textSytle"
+                    android:text="修改密码" />
+
+                <ImageView
+                    android:id="@+id/iv7_arrow_user_info_item"
+                    style="@style/imageStyle" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/phoneNumber_content_user_info"
+                style="@style/layoutSytle" >
+
+                <TextView
+                    android:id="@+id/tv_phoneNumber_title_user_info_item"
+                    style="@style/textSytle"
+                    android:text="手机号" />
+
+                <ImageView
+                    android:id="@+id/iv8_arrow_user_info_item"
+                    style="@style/imageStyle" />
+            </RelativeLayout>
+
+            <Button
+                android:id="@+id/btn_exit_activity_userinfo"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="#ffffff"
+                android:padding="10dp"
+                android:text="退出登录"
+                android:textColor="#f26d5f"
+                android:textSize="18sp" />
+        </LinearLayout>
     </ScrollView>
-   
+
 </RelativeLayout>

@@ -382,7 +382,7 @@ public class MineFragment extends Fragment {
 						.bitmapConfig(Bitmap.Config.RGB_565).build();
 				ImageLoader.getInstance().displayImage(avatarUrl, ivHeader,
 						options);
-			}else if(ACTION_CHANGE_USERDATA.equals(arg1.getAction())){
+			} else if (ACTION_CHANGE_USERDATA.equals(arg1.getAction())) {
 				getUserInfo();
 			}
 		}

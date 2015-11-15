@@ -20,6 +20,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.gexin.artplatform.discover.DiscoverFragment;
+import com.gexin.artplatform.dlog.DLog;
 import com.gexin.artplatform.home.HomeFragment;
 import com.gexin.artplatform.mine.MineFragment;
 import com.gexin.artplatform.question.QuestionFragment;
@@ -43,7 +44,7 @@ public class MainActivity extends FragmentActivity implements
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		Log.v(TAG, "onCreate");
+		DLog.v(TAG, "onCreate");
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 //		getActionBar().setDisplayShowHomeEnabled(false);
@@ -168,7 +169,7 @@ public class MainActivity extends FragmentActivity implements
 		switch (pos) {
 		case 0:
 			ivIndicators.get(0).setImageResource(R.drawable.home_icon_2);
-			tvIndicators.get(0).setTextColor(Color.parseColor("#cdfe6060"));
+			tvIndicators.get(0).setTextColor(Color.parseColor("#007AFF"));
 			ivIndicators.get(1).setImageResource(R.drawable.question_icon_1);
 			tvIndicators.get(1).setTextColor(Color.parseColor("#cd504f4f"));
 			ivIndicators.get(2).setImageResource(R.drawable.discover_icon_1);
@@ -180,7 +181,7 @@ public class MainActivity extends FragmentActivity implements
 			ivIndicators.get(0).setImageResource(R.drawable.home_icon_1);
 			tvIndicators.get(0).setTextColor(Color.parseColor("#cd504f4f"));
 			ivIndicators.get(1).setImageResource(R.drawable.question_icon_2);
-			tvIndicators.get(1).setTextColor(Color.parseColor("#cdfe6060"));
+			tvIndicators.get(1).setTextColor(Color.parseColor("#007AFF"));
 			ivIndicators.get(2).setImageResource(R.drawable.discover_icon_1);
 			tvIndicators.get(2).setTextColor(Color.parseColor("#cd504f4f"));
 			ivIndicators.get(3).setImageResource(R.drawable.me_icon_1);
@@ -192,7 +193,7 @@ public class MainActivity extends FragmentActivity implements
 			ivIndicators.get(1).setImageResource(R.drawable.question_icon_1);
 			tvIndicators.get(1).setTextColor(Color.parseColor("#cd504f4f"));
 			ivIndicators.get(2).setImageResource(R.drawable.discover_icon_2);
-			tvIndicators.get(2).setTextColor(Color.parseColor("#cdfe6060"));
+			tvIndicators.get(2).setTextColor(Color.parseColor("#007AFF"));
 			ivIndicators.get(3).setImageResource(R.drawable.me_icon_1);
 			tvIndicators.get(3).setTextColor(Color.parseColor("#cd504f4f"));
 			break;
@@ -204,7 +205,7 @@ public class MainActivity extends FragmentActivity implements
 			ivIndicators.get(2).setImageResource(R.drawable.discover_icon_1);
 			tvIndicators.get(2).setTextColor(Color.parseColor("#cd504f4f"));
 			ivIndicators.get(3).setImageResource(R.drawable.me_icon_2);
-			tvIndicators.get(3).setTextColor(Color.parseColor("#cdfe6060"));
+			tvIndicators.get(3).setTextColor(Color.parseColor("#007AFF"));
 			break;
 
 		default:

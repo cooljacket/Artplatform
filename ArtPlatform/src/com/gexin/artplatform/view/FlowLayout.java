@@ -3,6 +3,8 @@ package com.gexin.artplatform.view;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.gexin.artplatform.dlog.DLog;
+
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.util.AttributeSet;
@@ -47,6 +49,7 @@ public class FlowLayout extends ViewGroup {
 		int lineHeight = 0;
 		// 得到内部元素的个数，新需求最多不超过9张
 		int cCount = getChildCount();
+		cCount = cCount > 9? 9 : cCount;
 
 		for (int i = 0; i < cCount; i++) {
 			View child = getChildAt(i);
@@ -84,8 +87,8 @@ public class FlowLayout extends ViewGroup {
 			}
 		}
 
-		Log.v(TAG, "sizeWidth:" + sizeWidth + ",width:" + width);
-		Log.v(TAG, "sizeHeight:" + sizeHeight + ",height:" + height);
+		DLog.v(TAG, "sizeWidth:" + sizeWidth + ",width:" + width);
+		DLog.v(TAG, "sizeHeight:" + sizeHeight + ",height:" + height);
 		setMeasuredDimension(
 				//
 				modeWidth == MeasureSpec.EXACTLY ? sizeWidth : width + getPaddingLeft() + getPaddingRight(),

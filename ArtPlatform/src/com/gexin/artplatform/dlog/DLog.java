@@ -4,7 +4,7 @@ import android.util.Log;
 
 public class DLog {
 
-	private static boolean flag = false;
+	private static boolean flag = true;
 	private static boolean iflag = true;
 	private static boolean wflag = true;
 	private static boolean vflag = true;

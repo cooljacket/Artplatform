@@ -64,26 +64,28 @@
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="50dp"
-                    android:singleLine="true"
                     android:layout_toRightOf="@+id/iv_header_fragment_mine"
+                    android:singleLine="true"
                     android:text="用户名"
                     android:textColor="#2e2e2e"
-                    android:textStyle="bold"
-                    android:textSize="17sp" />
-                <TextView android:id="@+id/tv_status_fragment_mine"
+                    android:textSize="17sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tv_status_fragment_mine"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="教师"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:background="#f26d5f"
+                    android:paddingBottom="2dp"
                     android:paddingLeft="5dp"
                     android:paddingRight="5dp"
                     android:paddingTop="2dp"
-                    android:paddingBottom="2dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_alignParentRight="true"
-                    android:layout_centerVertical="true"
-                    android:visibility="gone"
-                    android:background="#f26d5f"/>
+                    android:text="教师"
+                    android:visibility="gone" />
             </RelativeLayout>
 
             <View
@@ -114,8 +116,8 @@
                         android:gravity="center_horizontal"
                         android:text="0"
                         android:textColor="#2e2e2e"
-                        android:textStyle="bold"
-                        android:textSize="17sp" />
+                        android:textSize="17sp"
+                        android:textStyle="bold" />
 
                     <TextView
                         android:layout_width="match_parent"
@@ -146,8 +148,8 @@
                         android:gravity="center_horizontal"
                         android:text="0"
                         android:textColor="#2e2e2e"
-                        android:textStyle="bold"
-                        android:textSize="17sp" />
+                        android:textSize="17sp"
+                        android:textStyle="bold" />
 
                     <TextView
                         android:layout_width="match_parent"
@@ -155,7 +157,7 @@
                         android:gravity="center_horizontal"
                         android:text="粉丝"
                         android:textColor="#959595"
-                        android:textSize="16sp"  />
+                        android:textSize="16sp" />
                 </LinearLayout>
 
                 <View
@@ -178,8 +180,8 @@
                         android:gravity="center_horizontal"
                         android:text="0"
                         android:textColor="#2e2e2e"
-                        android:textStyle="bold"
-                        android:textSize="17sp" />
+                        android:textSize="17sp"
+                        android:textStyle="bold" />
 
                     <TextView
                         android:layout_width="match_parent"
@@ -187,7 +189,7 @@
                         android:gravity="center_horizontal"
                         android:text="收藏"
                         android:textColor="#959595"
-                        android:textSize="16sp"  />
+                        android:textSize="16sp" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -332,7 +334,7 @@
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
                 android:paddingTop="5dp" >
-                
+
                 <ImageView
                     android:id="@+id/iv_subscribe_fragment_mine"
                     android:layout_width="25dp"
@@ -344,8 +346,8 @@
                     android:id="@+id/tv_subscribe_fragment_mine"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:padding="8dp"
                     android:layout_toRightOf="@id/iv_subscribe_fragment_mine"
+                    android:padding="8dp"
                     android:text="我的订阅"
                     android:textColor="#2e2e2e"
                     android:textSize="17sp" />
@@ -369,7 +371,6 @@
                 android:text="查询联考成绩"
                 android:textColor="#f26d5f"
                 android:textSize="18sp" />
-
         </LinearLayout>
     </ScrollView>
 

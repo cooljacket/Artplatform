@@ -39,6 +39,9 @@ import com.gexin.artplatform.bean.Problem;
 import com.gexin.artplatform.constant.Constant;
 import com.gexin.artplatform.database.DatabaseManager;
 import com.gexin.artplatform.dlog.DLog;
+import com.gexin.artplatform.mine.MineFragment;
+import com.gexin.artplatform.mine.UserInfoActivity;
+import com.gexin.artplatform.mine.login.LoginActivity;
 import com.gexin.artplatform.utils.HttpConnectionUtils;
 import com.gexin.artplatform.utils.NetUtil;
 import com.gexin.artplatform.utils.SPUtil;
@@ -123,7 +126,8 @@ public class QuestionFragment extends Fragment {
 		tvAsk.setText("提问");
 		tvAsk.setTextSize(20);
 		tvAsk.setTextColor(Color.WHITE);
-		LayoutParams params = new LayoutParams(android.view.ViewGroup.LayoutParams.WRAP_CONTENT,
+		LayoutParams params = new LayoutParams(
+				android.view.ViewGroup.LayoutParams.WRAP_CONTENT,
 				android.view.ViewGroup.LayoutParams.WRAP_CONTENT);
 		params.setMargins(10, 0, 10, 0);
 		llAsk.setGravity(Gravity.CENTER_VERTICAL);
@@ -153,6 +157,8 @@ public class QuestionFragment extends Fragment {
 		super.onActivityCreated(savedInstanceState);
 		IntentFilter filter = new IntentFilter();
 		filter.addAction(QuestionInfoActivity.ACTION_PROBLEM_CHANGE);
+		filter.addAction(LoginActivity.ACTION_USER_STATE_CHANGE);
+		filter.addAction(UserInfoActivity.ACTION_USER_STATE_CHANGE);
 		getActivity().registerReceiver(mReceiver, filter);
 		initData();
 		mListView.setOnItemClickListener(new OnItemClickListener() {
@@ -160,7 +166,7 @@ public class QuestionFragment extends Fragment {
 			@Override
 			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
 					long arg3) {
-				Log.v(TAG, "positon:" + arg2);
+				DLog.v(TAG, "positon:" + arg2);
 				Problem problem = (Problem) adapter.getItem(arg2 - 1);
 				Intent intent = new Intent(getActivity(),
 						QuestionInfoActivity.class);
@@ -228,7 +234,7 @@ public class QuestionFragment extends Fragment {
 
 	@Override
 	public void onActivityResult(int requestCode, int resultCode, Intent data) {
-		Log.v(TAG, "requestCode:" + requestCode);
+		DLog.v(TAG, "requestCode:" + requestCode);
 		if (resultCode == Activity.RESULT_OK) {
 			switch (requestCode) {
 			case POST_REQUEST_CODE:
@@ -254,7 +260,7 @@ public class QuestionFragment extends Fragment {
 				api += "?userId=" + userId;
 			}
 			String result = "";
-			//Log.v(TAG, api);
+			// Log.v(TAG, api);
 			DLog.i("GetLatestDataTask", "api: " + api);
 			result = NetUtil.connect(NetUtil.GET, api, null);
 			// Log.v(TAG, "result:" + result);
@@ -264,7 +270,7 @@ public class QuestionFragment extends Fragment {
 						: result.trim());
 				List<Problem> tempList = success(jObject);
 				if (tempList != null) {
-					Log.v(TAG, "Problems:" + tempList.toString());
+					DLog.v(TAG, "Problems:" + tempList.toString());
 					problems.clear();
 					problems.addAll(tempList);
 				}
@@ -338,7 +344,7 @@ public class QuestionFragment extends Fragment {
 	private List<Problem> success(JSONObject jObject) {
 		int state = -1;
 		List<Problem> tempList = null;
-		Log.v(TAG, "jObject:" + jObject.toString());
+		DLog.v(TAG, "jObject:" + jObject.toString());
 		try {
 			state = jObject.getInt("stat");
 			if (state == 1) {
@@ -360,6 +366,7 @@ public class QuestionFragment extends Fragment {
 
 	@Override
 	public void onDestroy() {
+		DLog.i(TAG, "onDestroy");
 		getActivity().unregisterReceiver(mReceiver);
 		super.onDestroy();
 	};
@@ -368,15 +375,15 @@ public class QuestionFragment extends Fragment {
 
 		@Override
 		public void onReceive(Context arg0, Intent arg1) {
-			Log.v(TAG, arg1.getAction());
+			DLog.v(TAG, arg1.getAction());
 			if (QuestionInfoActivity.ACTION_PROBLEM_CHANGE.equals(arg1
 					.getAction())) {
 				int zanNum = arg1.getIntExtra("zanNum", -1);
 				int commentNum = arg1.getIntExtra("commentNum", -1);
 				int isZan = arg1.getIntExtra("isZan", -1);
 				String problemId = arg1.getStringExtra("problemId");
-				DLog.v(TAG, "problemId"+problemId);
-				for (int i=0;i<problems.size();i++) {
+				DLog.v(TAG, "problemId" + problemId);
+				for (int i = 0; i < problems.size(); i++) {
 					if (problems.get(i).get_id().equals(problemId)) {
 						if (zanNum != -1) {
 							problems.get(i).setZan(zanNum);
@@ -391,6 +398,12 @@ public class QuestionFragment extends Fragment {
 						break;
 					}
 				}
+			} else if (UserInfoActivity.ACTION_USER_STATE_CHANGE.equals(arg1
+					.getAction())) {
+				adapter.clearData();
+			} else if (LoginActivity.ACTION_USER_STATE_CHANGE.equals(arg1
+							.getAction())) {
+				new GetLatestDataTask().execute();
 			}
 		}
 	};

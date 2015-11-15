@@ -21,6 +21,7 @@ import android.content.Context;
 import android.os.Build;
 import android.os.StrictMode;
 
+import com.gexin.artplatform.bean.User;
 import com.gexin.artplatform.constant.Constant;
 import com.gexin.artplatform.dlog.DLog;
 import com.nostra13.universalimageloader.cache.disc.naming.Md5FileNameGenerator;
@@ -32,6 +33,9 @@ import com.nostra13.universalimageloader.core.assist.QueueProcessingType;
  * @author Sergey Tarasevich (nostra13[at]gmail[dot]com)
  */
 public class UILApplication extends Application {
+	
+	private User user;
+	
 	@TargetApi(Build.VERSION_CODES.GINGERBREAD)
 	@SuppressWarnings("unused")
 	@Override
@@ -44,6 +48,14 @@ public class UILApplication extends Application {
 		super.onCreate();
 		
 		initImageLoader(getApplicationContext());
+	}
+	
+	public void setUser(User user) {
+		this.user = user;
+	}
+	
+	public User getUser() {
+		return user;
 	}
 
 	public static void initImageLoader(Context context) {

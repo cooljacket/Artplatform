@@ -24,6 +24,7 @@ import android.widget.LinearLayout.LayoutParams;
 import android.widget.Toast;
 
 import com.gexin.artplatform.R;
+import com.gexin.artplatform.constant.Conf;
 import com.gexin.artplatform.constant.Constant;
 import com.gexin.artplatform.dlog.DLog;
 import com.gexin.artplatform.utils.HttpConnectionUtils;
@@ -34,6 +35,8 @@ import com.gexin.artplatform.view.TitleBar;
 
 public class LoginActivity extends Activity {
 
+	public static final String ACTION_USER_STATE_CHANGE = "ACTION_USER_LOGIN";
+	
 	private static final String TAG = "LoginActivity";
 	private static final String LOGIN_API = Constant.SERVER_URL
 			+ Constant.USER_API + "/login";
@@ -156,6 +159,8 @@ public class LoginActivity extends Activity {
 						.toString());
 				DLog.v(TAG, "success");
 				Toast.makeText(this, "登录成功", Toast.LENGTH_SHORT).show();
+				// 通知问答页面更新数据
+				broadcastQuestionInfo();
 				setResult(RESULT_OK);
 				finish();
 			} else {
@@ -183,9 +188,16 @@ public class LoginActivity extends Activity {
 
 			@Override
 			public void onClick(View arg0) {
-				Log.v(TAG, "BackClick");
+				DLog.v(TAG, "BackClick");
 				finish();
 			}
 		});
+	}
+	
+	private void broadcastQuestionInfo() {
+		DLog.i(TAG, "broadcastQuestionInfo");
+		Intent intent = new Intent();
+		intent.setAction(ACTION_USER_STATE_CHANGE);
+		sendBroadcast(intent);
 	}
 }

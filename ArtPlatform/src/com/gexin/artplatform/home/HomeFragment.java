@@ -345,6 +345,7 @@ public class HomeFragment extends Fragment {
 		if (!city.equals("全国")) {
 			url += "&city=" + city;
 		}
+		// 表示android端，为了解决web网页跟客户端样式不一致问题
 		url += "&b_web=2";
 		return url;
 	}

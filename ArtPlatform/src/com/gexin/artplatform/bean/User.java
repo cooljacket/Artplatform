@@ -27,6 +27,50 @@ public class User {
 	private Place place;
 	private Weibo weibo;
 	private int grade;
+	
+	public User() {
+		
+	}
+	
+	// 在用户登录的前提下，用于从SP中构造User
+	public User(Context context) {
+		userId = (String) SPUtil.get(context, "userId", "");
+		name = (String) SPUtil.get(context, "name", "未设置");
+		avatarUrl = (String) SPUtil.get(context, "avatarUrl", "");
+		school = (String) SPUtil.get(context, "school", "未设置");
+		collectionNum = (Integer) SPUtil.get(context, "collectionNum", 0);
+		fanNum = (Integer) SPUtil.get(context, "fanNum", 0);
+		followNum = (Integer) SPUtil.get(context, "followNum", 0);
+		gender = (Integer) SPUtil.get(context, "gender", 0);
+		subscriptionNum = (Integer) SPUtil.get(context, "subscriptionNum", 0);
+		workNum = (Integer) SPUtil.get(context, "workNum", 0);
+		askMeNum = (Integer) SPUtil.get(context, "askNum", 0);
+		commentNum = (Integer) SPUtil.get(context, "commentNum", 0);
+		askMeNum = (Integer) SPUtil.get(context, "askMeNum", 0);
+		answerNum = (Integer) SPUtil.get(context, "answerNum", 0);
+		phone = (Long) SPUtil.get(context, "phone", (Long)0l);
+		SPUtil.put(context, "grade", this.grade);
+
+		studioName = (String) SPUtil.get(context, "studioName", "");
+		
+		place = new Place();
+		place.setProvince((String) SPUtil.get(context, "province", "未设置"));
+		place.setCity((String) SPUtil.get(context, "city", "未设置"));
+		
+		email =	(String) SPUtil.get(context, "email", "");
+		
+		weibo = new Weibo();
+		
+		weibo.pToken = (String) SPUtil.get(context, "pToken", "");
+		weibo.pId = (String) SPUtil.get(context, "pID", "");
+		
+		if (((String)SPUtil.get(context, "LOGIN", "STUDENT")).equals("STUDENT")) {
+			isTeacher = 0;
+		} else {
+			isTeacher = 1;
+		}
+		
+	}
 
 	public String getUserId() {
 		return userId;
@@ -227,7 +271,7 @@ public class User {
 		SPUtil.put(context, "answerNum", this.answerNum);
 		SPUtil.put(context, "phone", this.phone);
 		SPUtil.put(context, "grade", this.grade);
-		if(this.studioName!=null){
+		if (this.studioName != null) {
 			SPUtil.put(context, "studioName", this.studioName);
 		}
 		if (this.place.getProvince() != null) {
@@ -252,6 +296,48 @@ public class User {
 		} else {
 			SPUtil.put(context, "LOGIN", "TEACHER");
 		}
+	}
+
+	public void clearInfoFromSP(Context context) {
+		SPUtil.remove(context, "userId");
+		SPUtil.remove(context, "name");
+		SPUtil.remove(context, "avatarUrl");
+		SPUtil.remove(context, "school");
+		SPUtil.remove(context, "collectionNum");
+		SPUtil.remove(context, "fanNum");
+		SPUtil.remove(context, "followNum");
+		SPUtil.remove(context, "gender");
+		SPUtil.remove(context, "subscriptionNum");
+		SPUtil.remove(context, "workNum");
+		SPUtil.remove(context, "askNum");
+		SPUtil.remove(context, "commentNum");
+		SPUtil.remove(context, "askMeNum");
+		SPUtil.remove(context, "answerNum");
+		SPUtil.remove(context, "phone");
+		SPUtil.remove(context, "grade");
+		
+		if (this.studioName != null) {
+			SPUtil.remove(context, "studioName");
+		}
+		if (this.place.getProvince() != null) {
+			SPUtil.remove(context, "province");
+		}
+		if (this.place.getCity() != null) {
+			SPUtil.remove(context, "city");
+		}
+		if (this.email != null) {
+			SPUtil.remove(context, "email");
+		}
+		if (this.weibo != null) {
+			if (this.weibo.pToken != null) {
+				SPUtil.remove(context, "pToken");
+			}
+			if (this.weibo.pId != null) {
+				SPUtil.remove(context, "pID");
+			}
+		}
+		SPUtil.remove(context, "LOGIN");
+
 	}
 
 	private static class Weibo {

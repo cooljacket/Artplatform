@@ -37,6 +37,7 @@ import com.gexin.artplatform.bean.AnswerContent;
 import com.gexin.artplatform.bean.Comment;
 import com.gexin.artplatform.bean.Problem;
 import com.gexin.artplatform.constant.Constant;
+import com.gexin.artplatform.dlog.DLog;
 import com.gexin.artplatform.friends.ViewOtherUserActivity;
 import com.gexin.artplatform.largeImg.LargeImageActivity;
 import com.gexin.artplatform.studio.RoomDetailActivity;
@@ -738,7 +739,7 @@ public class QuestionInfoActivity extends Activity {
 					}
 					etComment.setHint("回复 " + hint);
 					replyTo = comment.getFromUser();
-					Log.v(TAG, "replyTo:" + replyTo);
+					DLog.v(TAG, "replyTo:" + replyTo);
 					askAfterTo = "";
 				}
 			});

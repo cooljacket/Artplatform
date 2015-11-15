@@ -59,6 +59,11 @@ public class QuestionAdapter extends BaseAdapter {
 				.cacheOnDisk(true).considerExifParams(true)
 				.bitmapConfig(Bitmap.Config.RGB_565).build();
 	}
+	
+	public void clearData() {
+		mList.clear();
+		notifyDataSetChanged();
+	}
 
 	@Override
 	public int getCount() {

@@ -37,6 +37,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.gexin.artplatform.R;
+import com.gexin.artplatform.application.UILApplication;
 import com.gexin.artplatform.constant.Constant;
 import com.gexin.artplatform.dlog.DLog;
 import com.gexin.artplatform.utils.FileUtil;
@@ -53,6 +54,8 @@ import com.nostra13.universalimageloader.core.ImageLoader;
 @SuppressLint("HandlerLeak")
 public class UserInfoActivity extends Activity implements OnClickListener {
 
+	public static final String ACTION_USER_STATE_CHANGE = "ACTION_USER_LOGOUT";
+
 	protected static final int ALBUM_REQUEST_CODE = 0;
 	protected static final int CAMERA_REQUEST_CODE = 1;
 	protected static final int MODIFY_REQUEST_CODE = 2;
@@ -64,14 +67,15 @@ public class UserInfoActivity extends Activity implements OnClickListener {
 	private static final String IMAGEDIR = Constant.APP_PATH + "image/";
 	private String imagePath = "";
 	private List<Map<String, Object>> mList = new ArrayList<Map<String, Object>>();
-	//private SimpleAdapter adapter;
-	private String[] titles = { "用户ID", "名字", "性别", "省份", "身份", "学校", "修改密码", "手机号" };
+	// private SimpleAdapter adapter;
+	private String[] titles = { "用户ID", "名字", "性别", "省份", "身份", "学校", "修改密码",
+			"手机号" };
 	private String[] gradeArray = { "高三", "高二", "高一", "初中", "大学", "业余" };
 	private List<String> values = new ArrayList<String>();
 	private int mIndex = 0;
 	private DisplayImageOptions headerOptions;
 
-	//private ListView mListView;
+	// private ListView mListView;
 	private Button btnExit;
 	private ImageView ivHeader;
 	private RelativeLayout rlHeader;
@@ -102,7 +106,7 @@ public class UserInfoActivity extends Activity implements OnClickListener {
 	}
 
 	private void initData() {
-        String userId = (String) SPUtil.get(this, "userId", "");
+		String userId = (String) SPUtil.get(this, "userId", "");
 		String name = (String) SPUtil.get(this, "name", "未设置");
 		int gender = (Integer) SPUtil.get(this, "gender", 0);
 		String sex = "";
@@ -151,13 +155,12 @@ public class UserInfoActivity extends Activity implements OnClickListener {
 		tv_province.setText(province);
 		tv_identity.setText(status);
 		tv_school.setText(school);
-		
-		
-		//adapter = new SimpleAdapter(this, mList, R.layout.user_info_item,
-				//new String[] { "title", "content" }, new int[] {
-						//R.id.tv_title_user_info_item,
-						//R.id.tv_content_user_info_item });
-		//mListView.setAdapter(adapter);
+
+		// adapter = new SimpleAdapter(this, mList, R.layout.user_info_item,
+		// new String[] { "title", "content" }, new int[] {
+		// R.id.tv_title_user_info_item,
+		// R.id.tv_content_user_info_item });
+		// mListView.setAdapter(adapter);
 
 		headerOptions = new DisplayImageOptions.Builder()
 				.showImageOnLoading(R.drawable.ic_contact_picture)
@@ -171,7 +174,7 @@ public class UserInfoActivity extends Activity implements OnClickListener {
 	}
 
 	private void initView() {
-		//mListView = (ListView) findViewById(R.id.lv_activity_userinfo);
+		// mListView = (ListView) findViewById(R.id.lv_activity_userinfo);
 		btnExit = (Button) findViewById(R.id.btn_exit_activity_userinfo);
 		ivHeader = (ImageView) findViewById(R.id.iv_header_activity_userinfo);
 		rlHeader = (RelativeLayout) findViewById(R.id.rl_userinfo_activity_userinfo);
@@ -184,15 +187,14 @@ public class UserInfoActivity extends Activity implements OnClickListener {
 		rl_school = (RelativeLayout) findViewById(R.id.school_content_user_info);
 		rl_change_pw = (RelativeLayout) findViewById(R.id.changePassword_content_user_info);
 		rl_pNumber = (RelativeLayout) findViewById(R.id.phoneNumber_content_user_info);
-		
-		tv_ID = (TextView)findViewById(R.id.tv_id1_content_user_info_item);
-		tv_name = (TextView)findViewById(R.id.tv_name_content_user_info_item);
-		tv_sex = (TextView)findViewById(R.id.tv_sex_content_user_info_item);
-		tv_province = (TextView)findViewById(R.id.tv_province_content_user_info_item);
-		tv_identity = (TextView)findViewById(R.id.tv_identity_content_user_info_item);
-		tv_school = (TextView)findViewById(R.id.tv_school_content_user_info_item);
-		
-		
+
+		tv_ID = (TextView) findViewById(R.id.tv_id1_content_user_info_item);
+		tv_name = (TextView) findViewById(R.id.tv_name_content_user_info_item);
+		tv_sex = (TextView) findViewById(R.id.tv_sex_content_user_info_item);
+		tv_province = (TextView) findViewById(R.id.tv_province_content_user_info_item);
+		tv_identity = (TextView) findViewById(R.id.tv_identity_content_user_info_item);
+		tv_school = (TextView) findViewById(R.id.tv_school_content_user_info_item);
+
 		rl_ID.setTag(0);
 		rl_name.setTag(1);
 		rl_sex.setTag(2);
@@ -201,9 +203,10 @@ public class UserInfoActivity extends Activity implements OnClickListener {
 		rl_school.setTag(5);
 		rl_change_pw.setTag(6);
 		rl_pNumber.setTag(7);
-		
+
 		titleBar = (TitleBar) findViewById(R.id.tb_userinfo_activity);
-		//ivHeader = (ImageView) findViewById(R.id.iv_header_activity_userinfo);
+		// ivHeader = (ImageView)
+		// findViewById(R.id.iv_header_activity_userinfo);
 
 		initTitleBar();
 		rlHeader.setOnClickListener(this);
@@ -217,22 +220,19 @@ public class UserInfoActivity extends Activity implements OnClickListener {
 		rl_school.setOnClickListener(this);
 		rl_change_pw.setOnClickListener(this);
 		rl_pNumber.setOnClickListener(this);
-		
-		/**mListView.setOnItemClickListener(new OnItemClickListener() {
 
-			@Override
-			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
-					long arg3) {
-				mIndex = arg2;
-				Intent intent = new Intent(UserInfoActivity.this,
-						ModifyUserInfoActivity.class);
-				intent.putExtra("index", arg2);
-				intent.putExtra("title", titles[arg2]);
-				intent.putExtra("value", (String) mList.get(arg2)
-						.get("content"));
-				startActivityForResult(intent, MODIFY_REQUEST_CODE);
-			}
-		});**/
+		/**
+		 * mListView.setOnItemClickListener(new OnItemClickListener() {
+		 * 
+		 * @Override public void onItemClick(AdapterView<?> arg0, View arg1, int
+		 *           arg2, long arg3) { mIndex = arg2; Intent intent = new
+		 *           Intent(UserInfoActivity.this,
+		 *           ModifyUserInfoActivity.class); intent.putExtra("index",
+		 *           arg2); intent.putExtra("title", titles[arg2]);
+		 *           intent.putExtra("value", (String) mList.get(arg2)
+		 *           .get("content")); startActivityForResult(intent,
+		 *           MODIFY_REQUEST_CODE); } });
+		 **/
 	}
 
 	private void showHeaderSelectDialog() {
@@ -325,29 +325,40 @@ public class UserInfoActivity extends Activity implements OnClickListener {
 				break;
 			case MODIFY_REQUEST_CODE:
 				if (resultCode == RESULT_OK) {
-					Log.v("ok", "okokokokokokok");
+					DLog.v("ok", "okokokokokokok");
 					Toast.makeText(UserInfoActivity.this, "OK",
 							Toast.LENGTH_SHORT).show();
-				String value = data.getStringExtra("value");
+					String value = data.getStringExtra("value");
 					if (value.isEmpty()) {
 						value = "未设置";
 					}
 					mList.get(mIndex).put("content", value);
-					Log.v("ok", "okokokokokokok44");
+					DLog.v("ok", "okokokokokokok44");
 					if (mIndex == 6 || mIndex == 7) {
 						mList.get(mIndex).put("content", "");
 					}
-					Log.v("ok", "okokokokokokok55");
-					Log.v("okok", value);
-					switch(mIndex) {
-					case 1:tv_name.setText(value);;break;
-					case 2:tv_sex.setText(value);break;
-					case 3:tv_province.setText(value);break;
-					case 4:tv_identity.setText(value);break;
-					case 5:tv_school.setText(value);break;
-					default:break;
+					DLog.v("ok", "okokokokokokok55");
+					DLog.v("okok", value);
+					switch (mIndex) {
+					case 1:
+						tv_name.setText(value);
+						break;
+					case 2:
+						tv_sex.setText(value);
+						break;
+					case 3:
+						tv_province.setText(value);
+						break;
+					case 4:
+						tv_identity.setText(value);
+						break;
+					case 5:
+						tv_school.setText(value);
+						break;
+					default:
+						break;
 					}
-					//adapter.notifyDataSetChanged();*/
+					// adapter.notifyDataSetChanged();*/
 				}
 				break;
 			default:
@@ -450,7 +461,7 @@ public class UserInfoActivity extends Activity implements OnClickListener {
 			showHeaderSelectDialog();
 			break;
 		case R.id.btn_exit_activity_userinfo:
-			//String userId = (String) SPUtil.get(this, "userId", "");
+			// String userId = (String) SPUtil.get(this, "userId", "");
 			Handler handler = new Handler() {
 				@Override
 				public void handleMessage(Message msg) {
@@ -463,7 +474,11 @@ public class UserInfoActivity extends Activity implements OnClickListener {
 							JSONObject jsonObject = new JSONObject(response);
 							int stat = jsonObject.getInt("stat");
 							if (stat == 1) {
-								SPUtil.clear(UserInfoActivity.this);
+								// SPUtil.clear(UserInfoActivity.this);
+								((UILApplication) getApplication()).getUser()
+										.clearInfoFromSP(UserInfoActivity.this);
+								// 通知问答页面更新数据
+								broadcastQuestionInfo();
 								setResult(RESULT_OK);
 								finish();
 							} else {
@@ -483,41 +498,47 @@ public class UserInfoActivity extends Activity implements OnClickListener {
 						Toast.makeText(UserInfoActivity.this, "退出失败，请稍后重试",
 								Toast.LENGTH_SHORT).show();
 						break;
-					
+
 					default:
 						break;
 					}
 					super.handleMessage(msg);
 				}
 			};
-			//DLog.i("logout api", Constant.SERVER_URL + Constant.USER_LOGOUT_API);
+			// DLog.i("logout api", Constant.SERVER_URL +
+			// Constant.USER_LOGOUT_API);
 			new HttpConnectionUtils(handler).get(Constant.SERVER_URL
 					+ Constant.USER_LOGOUT_API);
 			break;
-			
+
 		case R.id.id1_content_user_info:
-			mIndex = (Integer)((RelativeLayout)v).getTag();
+			mIndex = (Integer) ((RelativeLayout) v).getTag();
 			Intent intent = new Intent(UserInfoActivity.this,
 					ModifyUserInfoActivity.class);
 			intent.putExtra("index", mIndex);
 			intent.putExtra("title", titles[mIndex]);
-			intent.putExtra("value", (String) mList.get(mIndex)
-					.get("content"));
+			intent.putExtra("value", (String) mList.get(mIndex).get("content"));
 			startActivityForResult(intent, MODIFY_REQUEST_CODE);
 			break;
-		
+
 		default:
-			
-			mIndex = (Integer) ((RelativeLayout)v).getTag();
+
+			mIndex = (Integer) ((RelativeLayout) v).getTag();
 			Intent intent2 = new Intent(UserInfoActivity.this,
 					ModifyUserInfoActivity.class);
 			intent2.putExtra("index", mIndex);
 			intent2.putExtra("title", titles[mIndex]);
-			intent2.putExtra("value", (String) mList.get(mIndex)
-					.get("content"));
+			intent2.putExtra("value", (String) mList.get(mIndex).get("content"));
 			startActivityForResult(intent2, MODIFY_REQUEST_CODE);
 			break;
 		}
 	}
-	
+
+	private void broadcastQuestionInfo() {
+		DLog.i(TAG, "broadcastQuestionInfo");
+		Intent intent = new Intent();
+		intent.setAction(ACTION_USER_STATE_CHANGE);
+		sendBroadcast(intent);
+	}
+
 }

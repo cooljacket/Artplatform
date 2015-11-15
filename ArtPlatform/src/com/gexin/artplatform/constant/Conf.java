@@ -24,4 +24,5 @@ public class Conf {
     public static final String reportId = "fd4278e8f6";
     
     public static boolean isFirst;
+    public static boolean isLogin;
 }
