@@ -22,6 +22,7 @@ import android.widget.TextView;
 
 import com.gexin.artplatform.R;
 import com.gexin.artplatform.bean.Article;
+import com.gexin.artplatform.dlog.DLog;
 import com.gexin.artplatform.largeImg.LargeImageActivity;
 import com.gexin.artplatform.studio.RoomDetailActivity;
 import com.gexin.artplatform.utils.TimeUtil;
@@ -136,12 +137,17 @@ public class HomeListAdapter extends BaseAdapter {
 		int cnt = 0;
 		
 		// 一行显示三张图片
-		int magin = 5;
-//		int imageWidth = (holder.flPics.getWidth() - magin * 6) / 3;
-//		int imageHeight = imageWidth;
-		int imageWidth = 130;
-		int imageHeight = 130;
+		int magin = 8;
+		int imageWidth = (holder.flPics.getWidth() - magin * 6) / 3;
+		int imageHeight = imageWidth;
+//		int imageWidth = 130;
+//		int imageHeight = 130;
 		for (String url : article.getImages()) {
+//			DLog.i("before home url", "=================>" + url);
+			url = url.replaceFirst("oss", "img");
+//			url += "@80w_80h_50Q_1x.jpg";
+			url += "@80h_50Q_1x.jpg";
+//			DLog.i("after home url", "=================>" + url);
 			ImageView imageView = new ImageView(mContext);
 //			imageView.setMaxHeight(imageHeight);
 //			imageView.setMaxWidth(imageWidth);

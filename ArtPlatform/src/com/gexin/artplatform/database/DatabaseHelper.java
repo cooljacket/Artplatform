@@ -38,7 +38,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 	}
 	
 	@Override
-	public void onUpgrade(SQLiteDatabase db, int arg1, int arg2) {
+	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 		db.execSQL("ALTER TABLE article ADD COLUMN other STRING");
 	}
 }
