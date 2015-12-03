@@ -5,7 +5,7 @@
 	android:background="#111111"
 	android:padding="1dip">
 
-	<ImageView
+	<uk.co.senab.photoview.hacky.PhotoView
 		android:id="@+id/iv_large_image_item"
 		android:layout_width="match_parent"
 		android:layout_height="match_parent"

@@ -8,6 +8,8 @@ import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import uk.co.senab.photoview.PhotoView;
+import uk.co.senab.photoview.hacky.HackyViewPager;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
@@ -99,7 +101,7 @@ public class LargeImageActivity extends Activity {
 	}
 
 	private void initView() {
-		mViewPager = (ViewPager) findViewById(R.id.vp_large_image);
+		mViewPager = (HackyViewPager) findViewById(R.id.vp_large_image);
 		titleBar = (TitleBar) findViewById(R.id.tb_large_image);
 		llCmdFrame = (LinearLayout) findViewById(R.id.ll_cmd_large_image);
 		tvCollect = (TextView) findViewById(R.id.tv_collect_large_image);
@@ -335,7 +337,7 @@ public class LargeImageActivity extends Activity {
 			View imageLayout = inflater.inflate(R.layout.item_large_page, view,
 					false);
 			assert imageLayout != null;
-			final ImageView imageView = (ImageView) imageLayout
+			final ImageView imageView = (PhotoView) imageLayout
 					.findViewById(R.id.iv_large_image_item);
 			final ProgressBar spinner = (ProgressBar) imageLayout
 					.findViewById(R.id.pb_large_image_item);
