@@ -25,6 +25,7 @@ import com.gexin.artplatform.bean.Article;
 import com.gexin.artplatform.dlog.DLog;
 import com.gexin.artplatform.largeImg.LargeImageActivity;
 import com.gexin.artplatform.studio.RoomDetailActivity;
+import com.gexin.artplatform.utils.DensityUtil;
 import com.gexin.artplatform.utils.TimeUtil;
 import com.gexin.artplatform.view.FlowLayout;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
@@ -36,6 +37,9 @@ public class HomeListAdapter extends BaseAdapter {
 	private Context mContext;
 	private DisplayImageOptions avatarOptions;
 	private DisplayImageOptions picOptions;
+	
+	private final int FIRST_HEAD = 0;
+	private final int CONTENT_ITEM = 1;
 
 	public HomeListAdapter(List<Article> mList, Context mContext) {
 		super();
@@ -68,12 +72,32 @@ public class HomeListAdapter extends BaseAdapter {
 	public long getItemId(int arg0) {
 		return arg0;
 	}
+	
+	@Override
+	public int getItemViewType(int position) {
+		// TODO Auto-generated method stub
+		if (position == 0) {
+			return FIRST_HEAD;
+		} else {
+			return CONTENT_ITEM;
+		}
+	}
+	
+	@Override
+	public int getViewTypeCount() {
+		// TODO Auto-generated method stub
+		return 2;
+	}
 
 	@SuppressLint("InflateParams")
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
+		if (getItemViewType(position) == FIRST_HEAD) {
+			convertView = LayoutInflater.from(mContext).inflate(R.layout.home_list_item_head, null);
+			return convertView;
+		}
 		ViewHolder holder = null;
-		final Article article = mList.get(position);
+		final Article article = mList.get(position-1);
 		if (convertView == null) {
 			holder = new ViewHolder();
 			convertView = LayoutInflater.from(mContext).inflate(
@@ -137,11 +161,10 @@ public class HomeListAdapter extends BaseAdapter {
 		int cnt = 0;
 		
 		// 一行显示三张图片
-		int magin = 8;
-		int imageWidth = (holder.flPics.getWidth() - magin * 6) / 3;
+		int screenWidth = mContext.getResources().getDisplayMetrics().widthPixels;
+		int magin = 5;
+		int imageWidth = (screenWidth - magin * 6 - DensityUtil.dip2px(mContext, 50)) / 3;
 		int imageHeight = imageWidth;
-//		int imageWidth = 130;
-//		int imageHeight = 130;
 		for (String url : article.getImages()) {
 //			DLog.i("before home url", "=================>" + url);
 			url = url.replaceFirst("oss", "img");
@@ -151,14 +174,16 @@ public class HomeListAdapter extends BaseAdapter {
 			ImageView imageView = new ImageView(mContext);
 //			imageView.setMaxHeight(imageHeight);
 //			imageView.setMaxWidth(imageWidth);
-//			imageView.setAdjustViewBounds(true);
+			imageView.setAdjustViewBounds(true);
 			imageView.setScaleType(ScaleType.CENTER_CROP);
 			
 			MarginLayoutParams lp = new MarginLayoutParams(
 					imageWidth, imageHeight);
 			lp.setMargins(magin, magin, magin, magin);
-			ImageLoader.getInstance().displayImage(url, imageView, picOptions);
+			
+			
 			holder.flPics.addView(imageView, lp);
+			ImageLoader.getInstance().displayImage(url, imageView, picOptions);
 			final int index = cnt;
 			cnt++;
 			imageView.setOnClickListener(new OnClickListener() {

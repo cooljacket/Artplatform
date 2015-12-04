@@ -15,72 +15,78 @@
         custom:titleText="@string/tab_homepage" >
     </com.gexin.artplatform.view.TitleBar>
 
-    <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="50dp"
-        android:background="#f6f6f6"
-        android:gravity="center_vertical"
-        android:orientation="horizontal" >
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <com.handmark.pulltorefresh.library.PullToRefreshListView
+            android:id="@+id/lv_fragment_home"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#f2f2f3"
+            android:divider="@drawable/list_divider"
+            android:scrollbars="none" >
+        </com.handmark.pulltorefresh.library.PullToRefreshListView>
 
         <LinearLayout
-            android:id="@+id/ll_timefirst_fragment_home"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:clickable="true"
-            android:gravity="center"
-            android:orientation="vertical" >
+            android:layout_width="fill_parent"
+            android:layout_height="45dp"
+            android:layout_alignParentTop="true"
+            android:background="#eef6f6f6"
+            android:gravity="center_vertical"
+            android:orientation="horizontal" >
 
-            <TextView
-                android:id="@+id/tv_timefirst_fragment_home"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:id="@+id/ll_timefirst_fragment_home"
+                android:layout_width="0dp"
                 android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:clickable="true"
                 android:gravity="center"
-                android:text="@string/timefirst"
-                android:textColor="#cdfe6060"
-                android:textSize="16sp" />
+                android:orientation="vertical" >
 
-            <View
-                android:id="@+id/v_rightline_fragment_home"
-                android:layout_width="80dp"
-                android:layout_height="5dp"
-                android:background="#cdfe6060" />
-        </LinearLayout>
+                <TextView
+                    android:id="@+id/tv_timefirst_fragment_home"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="@string/timefirst"
+                    android:textColor="#cdfe6060"
+                    android:textSize="16sp" />
 
-        <LinearLayout
-            android:id="@+id/ll_hotfirst_fragment_home"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:clickable="true"
-            android:gravity="center"
-            android:orientation="vertical" >
+                <View
+                    android:id="@+id/v_rightline_fragment_home"
+                    android:layout_width="80dp"
+                    android:layout_height="5dp"
+                    android:background="#cdfe6060" />
+            </LinearLayout>
 
-            <TextView
-                android:id="@+id/tv_hotfirst_fragment_home"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:id="@+id/ll_hotfirst_fragment_home"
+                android:layout_width="0dp"
                 android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:clickable="true"
                 android:gravity="center"
-                android:text="@string/hotfirst"
-                android:textColor="#cd504f4f"
-                android:textSize="16sp" />
+                android:orientation="vertical" >
 
-            <View
-                android:id="@+id/v_leftline_fragment_home"
-                android:layout_width="80dp"
-                android:layout_height="5dp"
-                android:background="#fe6060"
-                android:visibility="gone" />
+                <TextView
+                    android:id="@+id/tv_hotfirst_fragment_home"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="@string/hotfirst"
+                    android:textColor="#cd504f4f"
+                    android:textSize="16sp" />
+
+                <View
+                    android:id="@+id/v_leftline_fragment_home"
+                    android:layout_width="80dp"
+                    android:layout_height="5dp"
+                    android:background="#fe6060"
+                    android:visibility="gone" />
+            </LinearLayout>
         </LinearLayout>
-    </LinearLayout>
-
-    <com.handmark.pulltorefresh.library.PullToRefreshListView
-        android:id="@+id/lv_fragment_home"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:background="#f2f2f3"
-        android:divider="@drawable/list_divider"
-        android:scrollbars="none" >
-    </com.handmark.pulltorefresh.library.PullToRefreshListView>
+    </RelativeLayout>
 
 </LinearLayout>
