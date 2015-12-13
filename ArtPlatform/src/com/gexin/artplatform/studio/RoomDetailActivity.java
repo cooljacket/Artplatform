@@ -43,6 +43,7 @@ import android.widget.Toast;
 import com.gexin.artplatform.R;
 import com.gexin.artplatform.bean.Studio;
 import com.gexin.artplatform.constant.Constant;
+import com.gexin.artplatform.dlog.DLog;
 import com.gexin.artplatform.mine.FocusOrFansActivity;
 import com.gexin.artplatform.question.PostProblemActivity;
 import com.gexin.artplatform.utils.BroadcastUtil;
@@ -303,7 +304,7 @@ public class RoomDetailActivity extends FragmentActivity implements
 				.bitmapConfig(Bitmap.Config.RGB_565).build();
 		ImageLoader.getInstance().displayImage(studio.getAvatarUrl(), ivHeader,
 				logoOptions);
-		Log.v(TAG, "isWatched:" + studio.getIsWatched());
+		DLog.v(TAG, "isWatched:" + studio.getIsWatched());
 		if (studio.getIsWatched() == 0) {
 			ibtnFocus.setImageResource(R.drawable.interest_icon_1);
 		} else {
@@ -514,7 +515,7 @@ public class RoomDetailActivity extends FragmentActivity implements
 		selectPos = pos;
 		if (selectPos < mTabs.size()) {
 			mViewPager.setCurrentItem(selectPos, false);
-			Log.v(TAG, "pos:" + selectPos);
+			DLog.v(TAG, "pos:" + selectPos);
 		}
 	}
 }

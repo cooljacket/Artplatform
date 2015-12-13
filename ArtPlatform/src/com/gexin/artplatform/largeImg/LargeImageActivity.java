@@ -310,7 +310,7 @@ public class LargeImageActivity extends Activity {
 			picOptions = new DisplayImageOptions.Builder()
 					.showImageOnLoading(R.drawable.ic_empty)
 					.showImageOnFail(R.drawable.ic_error).cacheInMemory(false)
-					// to void out of memory
+					// to avoid out of memory
 					.cacheOnDisk(true).considerExifParams(true)
 					.bitmapConfig(Bitmap.Config.RGB_565).build();
 		}
@@ -370,6 +370,7 @@ public class LargeImageActivity extends Activity {
 								message = "Unknown error";
 								break;
 							}
+							message = "网络连接异常";
 							Toast.makeText(view.getContext(), message,
 									Toast.LENGTH_SHORT).show();
 

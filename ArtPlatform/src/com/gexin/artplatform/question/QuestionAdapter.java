@@ -143,7 +143,7 @@ public class QuestionAdapter extends BaseAdapter {
 			holder.tvContent.setText("@"+askToName+" "+content);
 		}
 		holder.tvZan.setText("" + zan);
-		holder.tvAnsNum.setText("" + commentNum);
+		holder.tvAnsNum.setText("" + (commentNum + ansNum));
 
 		if (item.getIsZan() == 1) {
 			holder.ivZan.setImageResource(R.drawable.zan_icon_2);

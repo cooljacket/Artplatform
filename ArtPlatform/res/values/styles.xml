@@ -13,9 +13,9 @@
     </style>
 
     <!-- Application theme. -->
-    <style name="AppTheme" parent="AppBaseTheme">
-        <!-- All customizations that are NOT specific to a particular API-level can go here. -->
-    </style>
+    <style name="AppTheme" parent="AppBaseTheme">\
+        All customizations that are NOT specific to a particular API-level can go here.
+    </style> 
     
     <style name="anim_popupwindow">
         <item name="android:windowEnterAnimation">@anim/popupwindow_show</item>
@@ -54,5 +54,7 @@
         <item name="android:background">#ffffff</item>
         <item name="android:clickable">true</item>
     </style>
+
+    
 
 </resources>

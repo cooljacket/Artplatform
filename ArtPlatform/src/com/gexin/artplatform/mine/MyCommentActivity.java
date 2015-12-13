@@ -29,6 +29,7 @@ import com.gexin.artplatform.R;
 import com.gexin.artplatform.bean.Comment;
 import com.gexin.artplatform.bean.Problem;
 import com.gexin.artplatform.constant.Constant;
+import com.gexin.artplatform.dlog.DLog;
 import com.gexin.artplatform.question.QuestionAdapter;
 import com.gexin.artplatform.question.QuestionInfoActivity;
 import com.gexin.artplatform.utils.HttpConnectionUtils;
@@ -272,7 +273,7 @@ public class MyCommentActivity extends Activity {
 				api += "?userId=" + userId;
 			}
 			String result = "";
-			Log.v(TAG, api);
+			DLog.v(TAG, api);
 			result = NetUtil.connect(NetUtil.GET, api, null);
 			// Log.v(TAG, "result:" + result);
 			try {

@@ -102,7 +102,7 @@ public class QuestionInfoActivity extends Activity {
 		Handler handler = new HttpHandler(this) {
 			@Override
 			protected void succeed(JSONObject jObject) {
-				Log.v(TAG, "jObject:" + jObject.toString());
+				DLog.v(TAG, "jObject:" + jObject.toString());
 				setDataToView(jObject);
 			}
 		};
@@ -180,7 +180,7 @@ public class QuestionInfoActivity extends Activity {
 			public void handleMessage(Message msg) {
 				switch (msg.what) {
 				case HttpConnectionUtils.DID_SUCCEED:
-					Log.v(TAG, "askAfterRes:" + msg.obj);
+					DLog.v(TAG, "askAfterRes:" + msg.obj);
 					try {
 						JSONObject jsonObject = new JSONObject((String) msg.obj);
 						int state = jsonObject.getInt("stat");
@@ -321,7 +321,7 @@ public class QuestionInfoActivity extends Activity {
 				tvTime.setText(time);
 				tvName.setText(name);
 				tvType.setText(tag);
-				tvAnsNum.setText(commentNum + "");
+				tvAnsNum.setText((commentNum + ansNum) +  "");
 				tvZan.setText(zan + "");
 				if (problem.getIsZan() == 1) {
 					ivZan.setImageResource(R.drawable.zan_icon_2);

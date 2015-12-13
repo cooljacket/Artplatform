@@ -4,6 +4,7 @@ import java.util.List;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,11 +12,13 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 
 import com.gexin.artplatform.R;
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
 public class DiscoverImageGridAdapter extends BaseAdapter {
 	private List<String> mList;
 	private Context mContext;
+	private DisplayImageOptions picOptions;
 
 	public DiscoverImageGridAdapter(Context context, List<String> list) {
 		this.mContext = context;
@@ -51,7 +54,13 @@ public class DiscoverImageGridAdapter extends BaseAdapter {
 		}else {
 			holder = (ViewHolder) convertView.getTag();
 		}
-		ImageLoader.getInstance().displayImage(workUrl, holder.ivIcon);
+		picOptions = new DisplayImageOptions.Builder()
+		.showImageOnLoading(R.drawable.ic_empty)
+		.showImageOnFail(R.drawable.ic_error).cacheInMemory(true)
+		.cacheOnDisk(true).considerExifParams(true)
+		.bitmapConfig(Bitmap.Config.RGB_565).build();
+		//ImageLoader.getInstance().displayImage(workUrl, holder.ivIcon);
+		ImageLoader.getInstance().displayImage(workUrl, holder.ivIcon, picOptions);
 		return convertView;
 	}
 
